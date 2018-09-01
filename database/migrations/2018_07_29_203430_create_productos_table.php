@@ -9,7 +9,7 @@ class CreateProductosTable extends Migration
     /**
      * Run the migrations.
      *
-     * @return void'nombre', 'oferta', 'descripcion', 'contenido', 'categoria_id', 'video', 'video_descripcion', 'video_titulo', 'orden', 'destacado',
+     * @return void 
      */
     public function up()
     {

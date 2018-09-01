@@ -20,12 +20,12 @@ class AddSlidersTable extends Migration
             $table->string('texto2', 300)->nullable();
             $table->string('link', 300)->nullable();
             $table->string('orden', 10);
-            $table->enum('seccion', ['home', 'empresa']);
+            $table->enum('seccion', ['home'])->default('home');
             $table->timestamps();
         });
     }
 
-    /**
+    /** 'imagen', 'texto', 'texto2', 'link', 'orden', 'seccion',
      * Reverse the migrations.
      *
      * @return void
