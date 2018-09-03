@@ -26,30 +26,28 @@ class BannersController extends Controller
     {
         $banner          = Banner::find($id);
         $id              = Banner::all()->max('id');
-        $banner->texto   = $request->texto;
+        $banner->texto1   = $request->texto1;
         $banner->texto2  = $request->texto2;
-        $banner->link    = $request->link;
-        $banner->orden   = $request->orden;
         $banner->seccion = $request->seccion;
         $id++;
 
         if ($request->hasFile('imagen')) {
             if ($request->file('imagen')->isValid()) {
                 $file = $request->file('imagen');
-                $path = public_path('img/slider/');
+                $path = public_path('img/banner/');
                 $request->file('imagen')->move($path, $id . '_' . $file->getClientOriginalName());
-                $slider->imagen = 'img/slider/' . $id . '_' . $file->getClientOriginalName();
+                $banner->imagen = 'img/banner/' . $id . '_' . $file->getClientOriginalName();
             }
         }
 
-        $slider->update();
-        return redirect()->route('sliders.index');
+        $banner->update();
+        return redirect()->route('banners.index');
     }
 
     public function destroy($id)
     {
-        $slider = Slider::find($id);
-        $slider->delete();
-        return redirect()->route('sliders.index');
+        $banner = Banner::find($id);
+        $banner->delete();
+        return redirect()->route('banners.index');
     }
 }

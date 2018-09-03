@@ -37,10 +37,51 @@ Route::post('/nuevousuario', ['uses' => 'DistribuidorController@registroStore', 
     /*------------BANNERS----------------*/
     Route::resource('banners', 'Adm\BannersController')->middleware('admin');
 
-    /*------------CONTENIDO HOMES----------------*/
-    Route::resource('homes', 'Adm\ContenidohomesController')->middleware('admin');
+    /*------------CATALOGOS----------------*/
+    Route::resource('catalogos', 'Adm\CatalogosController')->middleware('admin');
+    // Rutas de reportes pdf
+    Route::get('pdf/{id}', ['uses' => 'Adm\CatalogosController@downloadPdf', 'as' => 'file-pdf']);
 
+    /*------------SECCION QUIERO----------------*/
+    Route::resource('quiero', 'Adm\ContenidoquieroController')->middleware('admin');
+
+    /*------------DATOS----------------*/
+    Route::resource('datos', 'Adm\DatosController')->middleware('admin');
+
+    /*------------DESTACADOS HOMES----------------*/
+    Route::resource('destacadosh', 'Adm\DestacadohomesController')->middleware('admin');
+
+    /*------------EMPRESAS----------------*/
+    Route::resource('empresas', 'Adm\EmpresasController')->middleware('admin');
+    //agregar imagenes de seccion empresas
+    Route::post('empresas/{id}/imagen/', 'Adm\EmpresasController@nuevaimagen')->name('nuevaimagenemp'); //es el store de las img de empresa
+    Route::delete('imgempresa/{id}/destroy', [
+        'uses' => 'Adm\EmpresasController@destroyimg',
+        'as'   => 'imgempresa.destroy',
+    ])->middleware('admin');
+
+    /*------------CATEGORIAS----------------*/
+    Route::resource('categorias', 'Adm\CategoriasController')->middleware('admin');
+
+    /*------------MODELOS----------------*/
+    Route::resource('modelos', 'Adm\ModelosController')->middleware('admin');
     
+    /*------------PRODUCTOS----------------*/
+    Route::resource('productos', 'Adm\ProductosController')->middleware('admin');
+    /*------------Imagen----------------*/
+    Route::get('producto/{producto_id}/imagenes/', 'Adm\ProductosController@imagenes')->name('imgproducto.lista'); //index del modulo imagenes
+    //agregar nuevas imagenes de productos
+    Route::post('producto/nuevaimagen/{id}', 'Adm\ProductosController@nuevaimagen')->name('imgproducto.nueva'); //es el store de las imagenes
+    Route::delete('imgproducto/{id}/destroy', [
+        'uses' => 'Adm\ProductosController@destroyimg',
+        'as'   => 'imgproducto.destroy',
+    ])->middleware('admin');
+
+    /*------------SLIDERS----------------*/
+    Route::resource('sliders', 'Adm\SlidersController')->middleware('admin');
+
+    /*------------USERS----------------*/
+    Route::resource('users', 'Adm\UsersController')->middleware('admin');
 
     //****************************************ZONA PRIVADA**************************************************************************************************************************************************
 	Route::get('/zonaprivada/productos', 'ZprivadaController@productos')->name('zproductos')->middleware('auth');

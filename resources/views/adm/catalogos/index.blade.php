@@ -1,6 +1,6 @@
 @extends('adm.layouts.frame')
 
-@section('titulo', 'Listado de Banners')
+@section('titulo', 'Catalogo de productos')
 
 @section('contenido')
 	    @if(count($errors) > 0)
@@ -24,37 +24,36 @@
         <table class="highlight bordered">
             <thead>
                 <td>
-                    Imagen
+                    Nombre
                 </td>
                 <td>
-                    Seccion
+                    PDF
                 </td>
                 <td class="text-right">
                     Acciones
                 </td>
             </thead>
             <tbody>
-                @foreach($banners as $banner)
+                @foreach($catalogos as $catalogo)
                 <tr>
                     <td>
-                        <img alt="seccion" height="150" src="{{ asset($banner->imagen) }}" width="400"/>
+                        {!!$catalogo->nombre!!}
                     </td>
                     <td>
-                        {{ $banner->seccion }}
+                        @if(isset($catalogo->pdf))
+                                    <a href='{{ route('file-pdf', ['post' => $catalogo->id])}}'> 
+                              <img width="20%" src="{{asset('img/pdficon.png')}}" />
+                            </a>
+                        @else
+                            Sin catalogo  
+                        @endif
                     </td>
                     <td class="text-right">
-                        <a href="{{ route('banners.edit', $banner->id) }}">
+                        <a href="{{ route('catalogos.edit',$catalogo->id)}}">
                             <i class="material-icons">
                                 create
                             </i>
                         </a>
-                        {!!Form::open(['class'=>'en-linea', 'route'=>['banners.destroy', $banner->id], 'method' => 'DELETE'])!!}
-                        <button class="submit-button" onclick="return confirm('¿Realmente deseas borrar el banner?')" type="submit">
-                            <i class="material-icons red-text">
-                                cancel
-                            </i>
-                        </button>
-                        {!!Form::close()!!}
                     </td>
                 </tr>
                 @endforeach
@@ -62,4 +61,6 @@
         </table>
     </div>
 </div>
+<script src="{{ asset('js/eliminar.js') }}" type="text/javascript">
+</script>
 @endsection

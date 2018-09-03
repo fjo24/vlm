@@ -1,6 +1,6 @@
 @extends('adm.layouts.frame')
 
-@section('titulo', 'Listado de Banners')
+@section('titulo', 'Modelos de productos')
 
 @section('contenido')
 	    @if(count($errors) > 0)
@@ -24,32 +24,26 @@
         <table class="highlight bordered">
             <thead>
                 <td>
-                    Imagen
-                </td>
-                <td>
-                    Seccion
+                    Codigo
                 </td>
                 <td class="text-right">
                     Acciones
                 </td>
             </thead>
             <tbody>
-                @foreach($banners as $banner)
+                @foreach($modelos as $modelo)
                 <tr>
                     <td>
-                        <img alt="seccion" height="150" src="{{ asset($banner->imagen) }}" width="400"/>
-                    </td>
-                    <td>
-                        {{ $banner->seccion }}
+                        {!!$modelo->codigo!!}
                     </td>
                     <td class="text-right">
-                        <a href="{{ route('banners.edit', $banner->id) }}">
+                        <a href="{{ route('modelos.edit',$modelo->id)}}">
                             <i class="material-icons">
                                 create
                             </i>
                         </a>
-                        {!!Form::open(['class'=>'en-linea', 'route'=>['banners.destroy', $banner->id], 'method' => 'DELETE'])!!}
-                        <button class="submit-button" onclick="return confirm('¿Realmente deseas borrar el banner?')" type="submit">
+                        {!!Form::open(['class'=>'en-linea', 'route'=>['modelos.destroy', $modelo->id], 'method' => 'DELETE'])!!}
+                        <button class="submit-button" onclick="return confirm('¿Realmente deseas borrar el modelo?')" type="submit">
                             <i class="material-icons red-text">
                                 cancel
                             </i>
@@ -60,6 +54,16 @@
                 @endforeach
             </tbody>
         </table>
+        <br>
+        <a href="{{ route('modelos.create') }}">
+            <div class="col l12 s12 no-padding" href="">
+                <button class="boton btn-large right" name="action" type="submit">
+                    Nuevo
+                </button>
+            </div>
+        </a>
     </div>
 </div>
+<script src="{{ asset('js/eliminar.js') }}" type="text/javascript">
+</script>
 @endsection

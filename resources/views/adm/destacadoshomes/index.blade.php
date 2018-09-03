@@ -1,9 +1,9 @@
 @extends('adm.layouts.frame')
 
-@section('titulo', 'Listado de Banners')
+@section('titulo', 'Listado de destacados')
 
 @section('contenido')
-	    @if(count($errors) > 0)
+        @if(count($errors) > 0)
 <div class="col s12 card-panel red lighten-4 red-text text-darken-4">
     <ul>
         @foreach($errors->all() as $error)
@@ -23,38 +23,36 @@
     <div class="col s12">
         <table class="highlight bordered">
             <thead>
-                <td>
-                    Imagen
-                </td>
-                <td>
-                    Seccion
-                </td>
-                <td class="text-right">
+                <th class="hide-on-med-and-down">
+                	Imagen
+                </th>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Orden
+                </th>
+                <th class="text-right">
                     Acciones
-                </td>
+                </th>
             </thead>
             <tbody>
-                @foreach($banners as $banner)
+                @foreach($destacados as $destacado)
                 <tr>
-                    <td>
-                        <img alt="seccion" height="150" src="{{ asset($banner->imagen) }}" width="400"/>
+                    <td class="hide-on-med-and-down"><img src="{{ asset($destacado->imagen) }}" alt="seccion" width="200" height="150"/>
                     </td>
                     <td>
-                        {{ $banner->seccion }}
+                        {!!$destacado->nombre!!}
+                    </td>
+                    <td>
+                        {!!$destacado->orden!!}
                     </td>
                     <td class="text-right">
-                        <a href="{{ route('banners.edit', $banner->id) }}">
+                        <a href="{{ route('destacadosh.edit',$destacado->id)}}">
                             <i class="material-icons">
                                 create
                             </i>
                         </a>
-                        {!!Form::open(['class'=>'en-linea', 'route'=>['banners.destroy', $banner->id], 'method' => 'DELETE'])!!}
-                        <button class="submit-button" onclick="return confirm('¿Realmente deseas borrar el banner?')" type="submit">
-                            <i class="material-icons red-text">
-                                cancel
-                            </i>
-                        </button>
-                        {!!Form::close()!!}
                     </td>
                 </tr>
                 @endforeach
@@ -62,4 +60,6 @@
         </table>
     </div>
 </div>
+<script src="{{ asset('js/eliminar.js') }}" type="text/javascript">
+</script>
 @endsection

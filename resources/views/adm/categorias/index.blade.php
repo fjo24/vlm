@@ -1,6 +1,6 @@
 @extends('adm.layouts.frame')
 
-@section('titulo', 'Listado de Banners')
+@section('titulo', 'Sistemas de productos')
 
 @section('contenido')
 	    @if(count($errors) > 0)
@@ -24,32 +24,32 @@
         <table class="highlight bordered">
             <thead>
                 <td>
-                    Imagen
+                    Nombre
                 </td>
                 <td>
-                    Seccion
+                    Orden
                 </td>
                 <td class="text-right">
                     Acciones
                 </td>
             </thead>
             <tbody>
-                @foreach($banners as $banner)
+                @foreach($categorias as $categoria)
                 <tr>
                     <td>
-                        <img alt="seccion" height="150" src="{{ asset($banner->imagen) }}" width="400"/>
+                        {!!$categoria->nombre!!}
                     </td>
                     <td>
-                        {{ $banner->seccion }}
+                        {!!$categoria->orden!!}
                     </td>
                     <td class="text-right">
-                        <a href="{{ route('banners.edit', $banner->id) }}">
+                        <a href="{{ route('categorias.edit',$categoria->id)}}">
                             <i class="material-icons">
                                 create
                             </i>
                         </a>
-                        {!!Form::open(['class'=>'en-linea', 'route'=>['banners.destroy', $banner->id], 'method' => 'DELETE'])!!}
-                        <button class="submit-button" onclick="return confirm('¿Realmente deseas borrar el banner?')" type="submit">
+                        {!!Form::open(['class'=>'en-linea', 'route'=>['categorias.destroy', $categoria->id], 'method' => 'DELETE'])!!}
+                        <button class="submit-button" onclick="return confirm('¿Realmente deseas borrar la categoria?')" type="submit">
                             <i class="material-icons red-text">
                                 cancel
                             </i>
@@ -60,6 +60,16 @@
                 @endforeach
             </tbody>
         </table>
+        <br>
+        <a href="{{ route('categorias.create') }}">
+            <div class="col l12 s12 no-padding" href="">
+                <button class="boton btn-large right" name="action" type="submit">
+                    Nuevo
+                </button>
+            </div>
+        </a>
     </div>
 </div>
+<script src="{{ asset('js/eliminar.js') }}" type="text/javascript">
+</script>
 @endsection
