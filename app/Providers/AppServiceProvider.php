@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Dato;
+
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        \Schema::defaultStringLength(191);
+
+        $telefono   = Dato::where('tipo', 'telefono')->first();
+        $direccion  = Dato::where('tipo', 'direccion')->first();
+        $email      = Dato::where('tipo', 'email')->first();
+
+        view()->share([
+            'telefono'   => $telefono,
+            'direccion'  => $direccion,
+            'email'      => $email,
+        ]);
     }
 
     /**

@@ -1,0 +1,217 @@
+.side-nav .collapsible-header, .side-nav.fixed .collapsible-header {
+    padding-left: 30px;
+}
+
+.cke_dialog select{
+  display: block;
+}
+
+
+main{
+  padding-left: 300px;
+}
+
+@media only screen and (max-width: 992px){
+main, header, footer{
+      padding-left: 0%;
+  }
+}
+
+.text-left{
+  text-align: left;
+}
+
+.text-right{
+  text-align: right;
+}
+
+.logo{
+  height: 80px;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-foto{
+  height: 90px;
+}
+
+.logo img{
+  height: 50px;
+}
+
+main{
+  margin-top: 50px;
+}
+
+nav.top-nav{
+  box-shadow: none;
+}
+
+.side-nav .collapsible-body li a, .side-nav.fixed .collapsible-body li a {
+    padding: 0 23.5px 0 50px;
+}
+
+.waves-effect.waves-admin .waves-ripple {
+      background-color: rgba(77, 182, 172, 0.80);
+}
+
+.btn, .btn:hover, .nav-wrapper{
+  background-color: #F07D00;
+  padding-left: 20%;
+}
+
+.icono{
+  height: 30px;
+}
+
+form .btn{
+  padding: 0;
+}
+
+.file-field .btn{
+  padding: 0 2rem!important;
+}
+
+form .btn input{
+  padding: 0 2rem;
+  height: 100%;
+}
+
+.en-linea{
+  display: inline;
+}
+
+.card-panel{
+  padding: 15px;
+  box-shadow: none;
+}
+
+.submit-button{
+  background: none;
+  padding: 0px;
+  border: none;
+}
+
+td{
+  padding: 5px;
+}
+
+button:focus {
+    outline: none;
+    background-color: transparent;
+}
+
+.card-panel ul{
+  margin: 0;
+}
+
+.pagination li span {
+    color: #444;
+    display: inline-block;
+    font-size: 1.2rem;
+    padding: 0 10px;
+    line-height: 30px;
+}
+
+.pagination li.active span {
+    color: #fff;
+}
+
+.pagination li.active {
+    background-color: #32398E;
+}
+
+.pagination{
+  float: right;
+}
+
+side-nav li>a>i, .sidenav li>a>[class^="mdi-"], .sidenav li>a li>a>[class*="mdi-"], .sidenav li>a>i.material-icons {
+    margin: 0 5px 0 0;
+    color: #F07D00;
+    transform: translateY(-2px);
+}
+
+.side-nav .collapsible-body>ul:not(.collapsible)>li.active, .side-nav.fixed .collapsible-body>ul:not(.collapsible)>li.active {
+    background-color: #32398E;
+}
+
+/* label focus color */
+ .input-field input:focus + label {
+   color: #FF0000 !important;
+ }
+ /* label underline focus color */
+ .row .input-field input:focus {
+   border-bottom: 1px solid #F07D00 !important;
+   box-shadow: 0 1px 0 0 #F07D00 !important
+ }
+
+select option{
+  color: #32398E !important;
+}
+
+.img-admin{
+  height: 50px;
+  width: auto;
+}
+
+@media only screen and (min-width: 993px){
+  .container {
+      width: 70%;
+  }
+}
+/*
+@media only screen and (min-width: 570px){
+.responsive-body {
+    font-size: 74px!important;
+    color: red!important;
+  }
+}
+*/
+#btn-menu{
+  display: none!important;
+  background-color: red;
+}
+
+.servicios img{
+  background-color: white;
+}
+
+form .btn input {
+    padding: 0 2rem!important;
+    height: 100%!important;
+}
+
+.boton{
+  background-color: #F07D00;
+  color: white;
+  font-weight: bold;
+}
+
+.boton:hover{
+  background-color: black;
+  color:  white;
+  font-weight: bold;
+}
+
+.imagen_listado img{
+  height:32%;
+  width:72%;
+}
+
+.sidenav .collapsible-header:hover, .sidenav.fixed .collapsible-header:hover {
+    background-color: rgba(0,0,0,0.05);
+    background: black;
+    color: #F07D00;
+}
+
+.sidenav li.active {
+    background-color: rgba(0,0,0,0.05);
+    background: black;
+    color: #F07D00;
+}
+
+.sidenav li>a {
+    color: #F07D00!important;
+}
