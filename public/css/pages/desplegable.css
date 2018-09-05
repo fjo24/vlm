@@ -1,0 +1,76 @@
+#menu_productos{
+    position: relative;
+}
+
+#menu_productos:hover{
+    position: relative;
+
+}
+
+
+#menu_productos ul li{
+    position: relative;
+    width: 180px;
+    background-color: #F3F3F3;
+    color: white!important;
+    text-align: left;
+    width: 180px;
+    height: 40px;
+    line-height: 35px;
+    float: none;
+    z-index: 7;
+}
+
+#menu_productos ul li:hover{
+    position: relative;
+    color: #595959;
+    text-align: left;
+    width: 180px;
+    height: 40px;
+    line-height: 35px;
+    float: none;
+    z-index: 7;
+}
+
+nav ul a:hover {
+    background-color: transparent!important;
+}
+
+#menu_productos ul li a{
+    color: 595959!important;
+    display: block;
+    font-size: 18px;
+    font-family: 'montserrat';
+}
+
+#menu_productos ul li a:hover{
+    color: #89B8E6!important;
+    display: block;
+    font-size: 18px;
+    font-family: 'montserrat';
+    border-bottom: none!important;
+}
+
+#menu_productos ul{
+   display: none;
+    position: absolute;
+}
+
+#menu_productos:hover ul{
+    display: block;
+}
+
+#menu_productos:hover .prod_menu{
+}
+
+#menu_productos .menu_subcate li{   
+    display: none;
+}
+
+#menu_productos .menu_cate:hover li{
+    display: block;
+    margin-left: 426px;
+    top:-35px;
+    line-height: 35px;
+    width: 295px;
+}

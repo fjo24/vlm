@@ -64,14 +64,11 @@ class ProductosController extends Controller
 
     public function edit($id)
     {
-        $relacionados = Producto::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
-        $categoria_preguntas = Categoria_pregunta::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
-        $aplicaciones = Aplicacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
         $producto                    = Producto::find($id);
+        $relacionados = Producto::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
         $categorias = Categoria::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
         $modelos = Modelo::orderBy('codigo', 'ASC')->pluck('codigo', 'id')->all();
-        $rubros = Rubro::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
-        return view('adm.productos.edit', compact('categorias', 'rubros', 'modelos', 'producto', 'aplicaciones', 'categoria_preguntas', 'relacionados'));
+        return view('adm.productos.edit', compact('categorias', 'rubros', 'modelos', 'aplicaciones', 'categoria_preguntas', 'relacionados', 'producto'));
     }
 
     public function update(Request $request, $id)
@@ -88,50 +85,19 @@ class ProductosController extends Controller
         }*/
 
         $producto->nombre            = $request->nombre;
-        $producto->ventajas          = $request->ventajas;
+        $producto->oferta          = $request->oferta;
         $producto->descripcion       = $request->descripcion;
         $producto->contenido         = $request->contenido;
         $producto->categoria_id      = $request->categoria_id;
-        $producto->caracteristicas   = $request->caracteristicas;
-        $producto->visible           = $request->visible;
-        $producto->categoria_pregunta_id= $request->categoria_pregunta_id;
+        $producto->video   = $request->video;
+        $producto->video_descripcion           = $request->video_descripcion;
+        $producto->video_titulo= $request->video_titulo;
         $producto->orden             = $request->orden;
-        $producto->aplica_desc             = $request->aplica_desc;
-        $producto->iva             = $request->iva;
-        $producto->presentacion      = $request->presentacion;
-        $producto->precio            = $request->precio;
-        $producto->tipo           = $request->tipo;
-        $id              = Producto::all()->max('id');
-        $id++;
-        if ($request->hasFile('manual')) {
-            if ($request->file('manual')->isValid()) {
-                $file = $request->file('manual');
-                $path = public_path('img/producto/manual/');
-                $request->file('manual')->move($path, $id . '_' . $file->getClientOriginalName());
-                $producto->manual = 'img/producto/manual/' . $id . '_' . $file->getClientOriginalName();
-            }
-        }
-        if ($request->hasFile('despiece')) {
-            if ($request->file('despiece')->isValid()) {
-                $file = $request->file('despiece');
-                $path = public_path('img/producto/despiece/');
-                $request->file('despiece')->move($path, $id . '_' . $file->getClientOriginalName());
-                $producto->despiece = 'img/producto/despiece/' . $id . '_' . $file->getClientOriginalName();
-            }
-        }
-
-        if ($request->hasFile('imagen_presentacion')) {
-            if ($request->file('imagen_presentacion')->isValid()) {
-                $file = $request->file('imagen_presentacion');
-                $path = public_path('img/producto/imagen_presentacion/');
-                $request->file('imagen_presentacion')->move($path, $id . '_' . $file->getClientOriginalName());
-                $producto->imagen_presentacion = 'img/producto/imagen_presentacion/' . $id . '_' . $file->getClientOriginalName();
-            }
-        }
-        $producto->update();
-        $producto->aplicaciones()->sync($request->get('aplicaciones'));
+        $producto->destacado             = $request->destacado;
+        $producto->visible             = $request->visible;
+        $producto->precio      = $request->precio;
         $producto->modelos()->sync($request->get('modelos'));
-        $producto->rubros()->sync($request->get('rubros'));
+    
         return redirect()->route('productos.index');
     }
 

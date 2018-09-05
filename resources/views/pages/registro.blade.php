@@ -67,7 +67,7 @@
 
 	                    </div>
 
-	                    <button class="btn waves-effect waves-light orange right" name="action" type="submit">
+	                    <button class="btn waves-effect waves-light purple right" name="action" type="submit">
                         Entrar
                         <i class="material-icons right">
                             send

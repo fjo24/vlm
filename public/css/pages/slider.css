@@ -1,0 +1,169 @@
+.slider .indicators .indicator-item.active{
+    background-color: rgba(201, 202, 201, 0.8)!important;
+}
+
+.slider .indicators .indicator-item {
+    bottom: 60px;
+    z-index: 7;
+}
+
+.slider .slides li img {
+    height: 561px!important;
+    width: 100%!important;
+    background-size: cover;
+    background-position: center;
+}
+
+
+.box-cap {
+    position: absolute!important;
+    top: 27%!important;
+    left: 28%!important;
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 596px!important;
+    height: 231px;
+    line-height: 250%; 
+    color: #FF5F8A!important;
+    text-align: center;
+    font-family: 'Asap';
+}
+
+.slidertext1{
+        position: relative;
+    top: 18px;
+    left: -1%;
+    line-height: 64px;
+    font-family: 'Asap';
+    font-size: 74px;
+    font-weight: bold;
+    padding: 1%;
+}
+.slidertext2{
+    position: relative;
+    top: 22px;
+    padding: 10px!important;
+    font-family: 'Lato';
+    font-size: 30px;
+    font-weight: 400;
+    padding: 3%;
+    color: #909090;
+}
+
+@media only screen and (max-width: 1025px){
+
+.box-cap {
+    position: absolute!important;
+    top: 25%!important;
+    left: 8%!important;
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 84%!important;
+    height: 204px;
+    line-height: 250%;
+    color: #FF5F8A!important;
+    text-align: center;
+    font-family: 'Asap';
+}
+}
+
+@media only screen and (max-width: 993px){
+
+.slider .slides li img {
+    width: 100%!important;
+}
+.box-cap {
+    position: absolute!important;
+    top: 14%!important;
+    left: 9%!important;
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 84%!important;
+    height: 175px;
+    line-height: 160%;
+    color: #FF5F8A!important;
+    text-align: center;
+    font-family: 'Asap';
+}
+}
+
+@media only screen and (max-width: 753px){
+.slidertext2 {
+    position: relative;
+    top: 8px;
+    padding: 10px!important;
+    font-family: 'Lato';
+    font-size: 18px;
+    font-weight: 600;
+    padding: 3%;
+    color: #909090;
+}
+
+}
+
+@media only screen and (max-width: 503px){
+
+    .box-cap {
+    position: absolute!important;
+    top: 14%!important;
+    left: 9%!important;
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 84%!important;
+    height: 85px;
+    line-height: 160%;
+    color: #FF5F8A!important;
+    text-align: center;
+    font-family: 'Asap';
+}
+    .slidertext1 {
+    position: relative;
+    top: 11px;
+    left: -1%;
+    line-height: 0px;
+    font-family: 'Asap';
+    font-size: 26px;
+    font-weight: bold;
+    padding: 1%;
+}
+    .carousel .carousel-slider {
+}
+
+.carousel .carousel-item>img {
+       height: 50%!important;
+}
+
+    
+}
+
+
+.carousel .indicators .indicator-item.active {
+    background-color: #fff;
+    height: 16px!important;
+    width: 16px!important;
+}
+
+.carousel .indicators .indicator-item {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    height: 16px!important;
+    width: 16px!important;
+    margin: 24px 4px;
+    background-color: rgba(255,255,255,0.5);
+    -webkit-transition: background-color .3s;
+    transition: background-color .3s;
+    border-radius: 50%;
+}
+
+@media only screen and (max-width: 351px){
+
+.box-cap {
+    position: absolute!important;
+    top: 9%!important;
+    left: 9%!important;
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 84%!important;
+    height: 106px;
+    line-height: 160%;
+    color: #FF5F8A!important;
+    text-align: center;
+    font-family: 'Asap';
+}
+}

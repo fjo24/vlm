@@ -1,0 +1,92 @@
+.page-footer {
+    height: 257px;
+    background: url(/img/layouts/fondofooter.png);
+    background-color: #ECECEC!important;
+}
+
+.news {
+    background-color: white!important;
+    border: none;
+    border-bottom: 1px solid #ffffff!important;
+    border-top: 1px solid #ffffff!important;
+    border-left: 1px solid #ffffff!important;
+    border-right: 1px solid #ffffff!important;
+    border-radius: 0;
+    outline: none;
+    height: 3rem;
+    width: 100%;
+    font-size: 16px;
+    margin: 0 0 8px 0;
+    height: 35px!important;
+    padding: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    -webkit-transition: border .3s, -webkit-box-shadow .3s;
+    transition: border .3s, -webkit-box-shadow .3s;
+    transition: box-shadow .3s, border .3s;
+    transition: box-shadow .3s, border .3s, -webkit-box-shadow .3s;
+}
+
+.btn-enviar {
+    background-color: #806EA8!important;
+    color: white!important;
+    border-radius: 0px!important;
+    padding-right: 35%!important;
+    padding-left: 35%!important;
+    height: 35px;
+    width: 90px;
+    margin-top: 80%;
+}
+
+.newsletter{
+    color: #7F6DA7;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Asap';
+}
+
+.sitemap{
+    padding-left: 4%!important;
+    font-size: 17px;
+    font-family: 'Asap';
+}
+
+.sitemap h5{
+    font-size: 17px!important;
+    color: #9976D2;
+    font-weight: 600;
+    font-family: 'Asap';
+}
+
+.itemsb{
+    font-size: 17px!important;
+    font-family: 'Asap';
+    color: #777777;
+}
+
+.titulo-footer3{
+    font-size: 17px!important;
+    color: #9976D2;
+    font-weight: 600;
+    font-family: 'Asap';
+}
+
+.rightlist{
+    font-size: 17px;
+    font-weight: 400;
+    color: #777777;
+}
+
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  1180 px <<<<<<*/
+@media only screen and (max-width: 600px) {
+    .page-footer {
+        height: 825px;
+    }
+
+    .sitemap {
+        padding-left: 9%!important;
+    }
+}
+

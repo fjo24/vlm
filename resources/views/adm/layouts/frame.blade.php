@@ -271,6 +271,23 @@
                     <li class="bold">
                         <a class="collapsible-header waves-effect waves-admin">
                             <i class="material-icons">
+                                pin_drop
+                            </i>
+                            Metadatos
+                        </a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    <a href="{{route('metadatos.index')}}">
+                                        Editar Metadatos
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="bold">
+                        <a class="collapsible-header waves-effect waves-admin">
+                            <i class="material-icons">
                                 account_circle
                             </i>
                             Usuarios

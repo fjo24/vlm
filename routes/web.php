@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PaginasController@home')->name('inicio');
 
 Auth::routes();
 Route::post('logindistribuidor', 'Auth\LoginDistribuidorController@login')->name('logindistribuidor');
@@ -24,6 +22,16 @@ Route::get('/home', 'Adm\AdminController@admin')->name('home');
 Route::get('registro', ['uses' => 'DistribuidorController@index', 'as' => 'registro']);
 Route::post('/registro', ['uses' => 'DistribuidorController@store', 'as' => 'cliente.store']);
 Route::post('/nuevousuario', ['uses' => 'DistribuidorController@registroStore', 'as' => 'registro.store']);
+
+//PRODUCTOS FILTRADOS POR CATEGORIAS
+
+Route::get('productos/{id}', 'PaginasController@productos')->name('productos');
+
+//CATEGORIAS
+Route::get('/categorias', 'PaginasController@categorias');
+
+//INFO DE PRODUCTO
+Route::get('productoinfo/{id}', 'PaginasController@productoinfo')->name('productoinfo');
 
 /*******************ADMIN************************/
     Route::prefix('adm')->middleware('admin')->middleware('auth')->group(function () {
@@ -82,6 +90,9 @@ Route::post('/nuevousuario', ['uses' => 'DistribuidorController@registroStore', 
 
     /*------------USERS----------------*/
     Route::resource('users', 'Adm\UsersController')->middleware('admin');
+
+    /*------------METADATOS----------------*/
+    Route::resource('metadatos', 'adm\MetadatosController');
 
     //****************************************ZONA PRIVADA**************************************************************************************************************************************************
 	Route::get('/zonaprivada/productos', 'ZprivadaController@productos')->name('zproductos')->middleware('auth');

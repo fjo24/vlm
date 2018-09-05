@@ -32,23 +32,12 @@
                         {!!Form::text('precio', null , ['class'=>'', ''])!!}
             </div>
             <div class="file-field input-field col l6 s12">
-            {!! Form::label('Sistema') !!}<br />
-                {!! Form::select('categoria_id', $categorias, null, ['class' => 'form-control', 'placeholder' => 'Sistema', 'required']) !!}
-            </div>
-            <div class="input-field col l6 s12">
-                {!! Form::label('rubros') !!}<br />
-                {!! Form::select('rubros[]', $rubros, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
-            </div>
-            <div class="input-field col l6 s12">
-                {!! Form::label('Aplicaciones') !!}<br />
-                {!! Form::select('aplicaciones[]', $aplicaciones, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
+            {!! Form::label('Categoria') !!}<br />
+                {!! Form::select('categoria_id', $categorias, null, ['class' => 'form-control', 'placeholder' => 'Categoria', 'required']) !!}
             </div>
             <div class="input-field col l6 s12">
                 {!! Form::label('modelos') !!}<br />
                 {!! Form::select('modelos[]', $modelos, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
-            </div>
-            <div class="input-field col l6 s12">
-                {!! Form::select('categoria_pregunta_id', $categoria_preguntas, null, ['class' => 'form-control', 'placeholder' => 'Categoria de preguntas']) !!}
             </div>
             <div class="input-field col l6 s12">
                 {!! Form::select('visible', ['publico' => 'publico', 'privado' => 'privado', 'ambos' => 'ambos'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione visibilidad']) !!}
@@ -57,57 +46,19 @@
                 {!!Form::label('Orden:')!!}
                         {!!Form::text('orden', null , ['class'=>'', ''])!!}
             </div>
-            <div class="input-field col l6 s12">
-                {!! Form::select('tipo', ['novedad' => 'novedad', 'oferta' => 'oferta', 'ninguna' => 'ninguna'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione tipo de producto']) !!}
-            </div>
-
-            <div class="input-field col l6 s12">
-                {!! Form::select('iva', ['21' => '21%', '10.5' => '10,5%'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione iva para producto']) !!}
-            </div>
-            <div class="input-field col l6 s12">
-                <label>Aplica para descuento?</label>
-                <br>
-<p>
-      <label>
-        <input class="with-gap" name="aplica_desc" type="radio" value="1" @if($producto->aplica_desc == '1') checked @endif />
-        <span>Si</span>
-      </label>
-    </p>
-    <p>
-      <label>
-        <input class="with-gap" name="aplica_desc" type="radio" value="0" @if($producto->aplica_desc == '0') checked @endif />
-        <span>No</span>
-      </label>
-    </p>
-            </div>
         </div>
-            <div class="file-field input-field col l6 s12">
-                <div class="btn">
-                    <span>
-                        Manual
-                    </span>
-                    {!! Form::file('manual') !!}
-                </div>
-                <div class="file-path-wrapper">
-                    {!! Form::text('manual',null, ['class'=>'file-path']) !!}
-                </div>
-            </div>
-            <div class="file-field input-field col l6 s12">
-                <div class="btn">
-                    <span>
-                        Despiece
-                    </span>
-                    {!! Form::file('despiece') !!}
-                </div>
-                <div class="file-path-wrapper">
-                    {!! Form::text('despiece',null, ['class'=>'file-path']) !!}
-                </div>
-            </div>
-       <label class="col l12 s12" for="descripcion">
+        <div class="input-field col l6 s12">
+            {!! Form::select('oferta', ['promocion' => 'promocion', 'descuento' => 'descuento', 'ninguna' => 'ninguna'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione tipo de oferta']) !!}
+        </div>
+        <div class="input-field col l6 s12">
+            {!! Form::select('destacado', ['1' => 'si', '2' => 'no'], null, ['class' => 'form-control', 'placeholder' => 'Producto destacado?']) !!}
+        </div>
+        <label class="col l12 s12" for="descripcion">
             Descripcion
         </label>
         <div class="input-field col l12 s12">
-            <textarea class="materialize-textarea" id="descripcion" name="descripcion" required="">{!! $producto->descripcion !!}
+            <textarea class="materialize-textarea" id="descripcion" name="descripcion" required="">
+            {!! $producto->descripcion !!}
             </textarea>
         </div>
         <label class="col l12 s12" for="contenido">
@@ -115,28 +66,28 @@
         </label>
         <div class="input-field col l12 s12">
             <textarea class="materialize-textarea" id="contenido" name="contenido" required="">
-                {!! $producto->contenido !!}
+            {!! $producto->contenido !!}
             </textarea>
         </div>
-        <label class="col l12 s12" for="ventajas">
-            Ventajas
-        </label>
-        <div class="input-field col l12 s12">
-            <textarea class="materialize-textarea" id="ventajas" name="ventajas" required="">
-                {!! $producto->ventajas !!}
-            </textarea>
+        <div class="input-field col l6 s12">
+            {!!Form::label('Video:')!!}
+            {!!Form::text('video', null , ['class'=>'', ''])!!}
         </div>
-        <label class="col l12 s12" for="caracteristicas">
-            Caracteristicas
+        <div class="input-field col l6 s12">
+            {!!Form::label('Video titulo:')!!}
+            {!!Form::text('video_titulo', null , ['class'=>'', ''])!!}
+        </div>
+        <label class="col l12 s12" for="video_descripcion">
+            Video descripción
         </label>
         <div class="input-field col l12 s12">
-            <textarea class="materialize-textarea" id="caracteristicas" name="caracteristicas" required="">
-                {!! $producto->caracteristicas !!}
+            <textarea class="materialize-textarea" id="video_descripcion" name="video_descripcion" required="">
+                {!! $producto->video_descripcion !!}
             </textarea>
         </div>
         <div class="col l12 s12 no-padding">
             <button class="boton btn-large right" name="action" type="submit">
-                Editar
+                Crear
             </button>
         </div>
         {!!Form::close()!!}
@@ -147,10 +98,9 @@
 @endsection
 @section('js')
 <script type="text/javascript">
-    CKEDITOR.replace('ventajas');
     CKEDITOR.replace('descripcion');
     CKEDITOR.replace('contenido');
-    CKEDITOR.replace('caracteristicas');
+    CKEDITOR.replace('video_descripcion');
     CKEDITOR.config.height = '150px';
     CKEDITOR.config.width = '100%';
     
