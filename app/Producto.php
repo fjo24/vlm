@@ -33,7 +33,7 @@ class Producto extends Model
 
     public function productos()
     {
-        return $this->hasMany('App\Producto_relacionado'); 
+        return $this->belongsToMany('App\Producto', 'producto_producto', 'producto_id', 'producto2_id');
     }
 
 }

@@ -1,0 +1,27 @@
+.seccion-banner {
+    height: 163px;
+    width: 100%;
+}
+
+.btexto{
+	padding-left: 8.8%;
+	padding-top: 2%;
+}
+
+.tbanner {
+    color: #FFFFFF;
+    font-family: 'Asap';
+    font-size: 38px;
+    font-weight: 500;
+}
+
+.tbanner2 {
+    color: #FFFFFF;
+    font-family: 'Asap';
+    font-size: 22px;
+    position: relative;
+    font-weight: 400;
+    bottom: 4px;
+    width: 43%;
+    line-height: 28px;
+}

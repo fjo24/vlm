@@ -24,10 +24,23 @@ class PaginasController extends Controller
     public function productos($id)
     {
         $activo        = 'productos';
+        $todos = 'si';
         $categoria     = Categoria::find($id);
         $productos     = Producto::orderBy('orden', 'ASC')->Where('categoria_id', $id)->get();
         $ready         = 0;
 
-        return view('pages.productos', compact('categoria', 'productos', 'activo', 'ready'));
+        return view('pages.productos', compact('categoria', 'productos', 'activo', 'ready', 'todos'));
+    }
+
+    public function productoinfo($id)
+    {
+        $p     = Producto::find($id);
+        $categoria = Categoria::find($p->categoria_id);
+        $ready         = 0;
+        $relacionados  = Producto::OrderBy('orden', 'ASC')->Where('categoria_id', $p->categoria_id)->get();
+        $activo        = 'productos';
+        $productos     = Producto::OrderBy('categoria_id', 'ASC')->get();
+
+        return view('pages.productoinfo', compact('categoria', 'productos', 'ready', 'activo', 'p', 'relacionados'));
     }
 }

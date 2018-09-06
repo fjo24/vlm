@@ -26,15 +26,16 @@ class CategoriasController extends Controller
 
         $categoria              = new Categoria();
         $categoria->nombre      = $request->nombre;
+        $categoria->descripcion = $request->descripcion;
         $categoria->orden       = $request->orden;
         $id                     = Categoria::all()->max('id');
         $id++;
-        if ($request->hasFile('imagen')) {
-            if ($request->file('imagen')->isValid()) {
-                $file = $request->file('imagen');
+        if ($request->hasFile('banner')) {
+            if ($request->file('banner')->isValid()) {
+                $file = $request->file('banner');
                 $path = public_path('img/categoria/');
-                $request->file('imagen')->move($path, $id . '_' . $file->getClientOriginalName());
-                $categoria->imagen = 'img/categoria/' . $id . '_' . $file->getClientOriginalName();
+                $request->file('banner')->move($path, $id . '_' . $file->getClientOriginalName());
+                $categoria->banner = 'img/categoria/' . $id . '_' . $file->getClientOriginalName();
             }
         }
         $categoria->save();
@@ -57,14 +58,15 @@ class CategoriasController extends Controller
     {
         $categoria = Categoria::find($id);
         $categoria->nombre = $request->nombre;
+        $categoria->descripcion = $request->descripcion;
         $categoria->orden  = $request->orden;
 
-        if ($request->hasFile('imagen')) {
-            if ($request->file('imagen')->isValid()) {
-                $file = $request->file('imagen');
+        if ($request->hasFile('banner')) {
+            if ($request->file('banner')->isValid()) {
+                $file = $request->file('banner');
                 $path = public_path('img/categoria/');
-                $request->file('imagen')->move($path, $id . '_' . $file->getClientOriginalName());
-                $categoria->imagen = 'img/categoria/' . $id . '_' . $file->getClientOriginalName();
+                $request->file('banner')->move($path, $id . '_' . $file->getClientOriginalName());
+                $categoria->banner = 'img/categoria/' . $id . '_' . $file->getClientOriginalName();
             }
         }
         $categoria->save();

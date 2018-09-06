@@ -22,8 +22,7 @@
 <div class="row">
     <div class="col l12 s12">
         {!!Form::open(['route'=>'productos.store', 'method'=>'POST', 'files' => true])!!}
-        <div class="row">
-            <div class="input-field col l6 s12">
+        <div class="input-field col l6 s12">
                 {!!Form::label('Nombre:')!!}
                         {!!Form::text('nombre', null , ['class'=>'', ''])!!}
             </div>
@@ -40,19 +39,25 @@
                 {!! Form::select('modelos[]', $modelos, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
             </div>
             <div class="input-field col l6 s12">
+                {!! Form::label('productos') !!}<br/>
+                {!! Form::select('productos[]', $productos, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
+            </div>
+            <div class="input-field col l6 s12">
+            {!! Form::label('Visibilidad') !!}<br />
                 {!! Form::select('visible', ['publico' => 'publico', 'privado' => 'privado', 'ambos' => 'ambos'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione visibilidad']) !!}
             </div>
+        <div class="input-field col l6 s12">
+        {!! Form::label('Oferta') !!}<br />
+            {!! Form::select('oferta', ['promocion' => 'promocion', 'descuento' => 'descuento', 'ninguna' => 'ninguna'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione tipo de oferta']) !!}
+        </div>
+        <div class="input-field col l6 s12">
+        {!! Form::label('destacado?') !!}<br />
+            {!! Form::select('destacado', ['1' => 'si', '2' => 'no'], null, ['class' => 'form-control', 'placeholder' => 'Producto destacado?']) !!}
+        </div>
             <div class="input-field col l6 s12">
                 {!!Form::label('Orden:')!!}
                         {!!Form::text('orden', null , ['class'=>'', ''])!!}
             </div>
-        </div>
-        <div class="input-field col l6 s12">
-            {!! Form::select('oferta', ['promocion' => 'promocion', 'descuento' => 'descuento', 'ninguna' => 'ninguna'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione tipo de oferta']) !!}
-        </div>
-        <div class="input-field col l6 s12">
-            {!! Form::select('destacado', ['1' => 'si', '2' => 'no'], null, ['class' => 'form-control', 'placeholder' => 'Producto destacado?']) !!}
-        </div>
         <label class="col l12 s12" for="descripcion">
             Descripcion
         </label>

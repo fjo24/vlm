@@ -20,7 +20,7 @@
 header('Access-Control-Allow-Origin: *'); 
 ?>
                                     <link href="http://allfont.es/allfont.css?fonts=raleway-extrabold" rel="stylesheet" type="text/css" />-->
-                                    <link href="https://fonts.googleapis.com/css?family=Asap:400,500i,600,700" rel="stylesheet">
+                                    <link href="https://fonts.googleapis.com/css?family=Asap:400,400i,500i,600,700" rel="stylesheet">
                                     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
                                     <script src='https://www.google.com/recaptcha/api.js'></script>
                                         <link href="{{ asset('plugins/materialize/css/materialize.min.css') }}" rel="stylesheet">

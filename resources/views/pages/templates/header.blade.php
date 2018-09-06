@@ -54,9 +54,8 @@
                     <a class="activo prod_menu" href="">
                         PRODUCTOS
                     </a>
-                            <i class="material-icons" style="display: inline-block;line-height: 0;position: relative;
-        top: 13%;">keyboard_arrow_down</i>
-                            <ul style="margin-top: -65%!important;">
+
+                            <ul style="margin-top: -16%!important;">
                             @foreach($categorias as $categoria)
                         <li class="menu_cate">
                             <a href="{{ route('productos', $categoria->id)}}" style="text-transform: lowercase;padding-top: 5%;">

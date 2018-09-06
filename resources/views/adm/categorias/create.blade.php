@@ -31,16 +31,20 @@
                 {!!Form::label('orden:')!!}
 						{!!Form::text('orden', null , ['class'=>'', 'required'])!!}
             </div>
+            <div class="input-field col l12 m12 s12">
+                {!!Form::label('Descripción:')!!}
+                        {!!Form::text('descripcion', null , ['class'=>'', 'required'])!!}
+            </div>
             <div class="file-field input-field col l6 s12">
                 <div class="btn">
                     <span>
-                        Imagen
+                        Banner
                     </span>
-                    {!! Form::file('imagen') !!}
+                    {!! Form::file('banner') !!}
                 </div>
                 <div class="file-path-wrapper">
-                    {!! Form::text('imagen',null, ['class'=>'file-path']) !!}
-                    {!!Form::label('Recomendado: 311px - 311px')!!}
+                    {!! Form::text('banner',null, ['class'=>'file-path']) !!}
+                    {!!Form::label('Recomendado: 1400px - 163px')!!}
                 </div>
             </div>
         </div>

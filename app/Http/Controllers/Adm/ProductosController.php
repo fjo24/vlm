@@ -54,6 +54,7 @@ class ProductosController extends Controller
 
         $producto->save();
         $producto->modelos()->sync($request->get('modelos'));
+        $producto->productos()->sync($request->get('productos'));
         return redirect()->route('productos.index');
     }
 
@@ -67,8 +68,9 @@ class ProductosController extends Controller
         $producto                    = Producto::find($id);
         $relacionados = Producto::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
         $categorias = Categoria::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
+        $productos = Producto::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
         $modelos = Modelo::orderBy('codigo', 'ASC')->pluck('codigo', 'id')->all();
-        return view('adm.productos.edit', compact('categorias', 'rubros', 'modelos', 'aplicaciones', 'categoria_preguntas', 'relacionados', 'producto'));
+        return view('adm.productos.edit', compact('categorias', 'productos', 'rubros', 'modelos', 'aplicaciones', 'categoria_preguntas', 'relacionados', 'producto'));
     }
 
     public function update(Request $request, $id)
@@ -96,7 +98,9 @@ class ProductosController extends Controller
         $producto->destacado             = $request->destacado;
         $producto->visible             = $request->visible;
         $producto->precio      = $request->precio;
+        $producto->save();
         $producto->modelos()->sync($request->get('modelos'));
+        $producto->productos()->sync($request->get('productos'));
     
         return redirect()->route('productos.index');
     }
