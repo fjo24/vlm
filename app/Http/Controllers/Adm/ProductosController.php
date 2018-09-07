@@ -29,8 +29,9 @@ class ProductosController extends Controller
     {
         $relacionados = Producto::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
         $categorias = Categoria::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
+        $productos = Producto::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
         $modelos = Modelo::orderBy('codigo', 'ASC')->pluck('codigo', 'id')->all();
-        return view('adm.productos.create', compact('categorias', 'rubros', 'modelos', 'aplicaciones', 'categoria_preguntas', 'relacionados'));
+        return view('adm.productos.create', compact('categorias', 'rubros', 'modelos', 'aplicaciones', 'categoria_preguntas', 'relacionados', 'productos'));
     }
 
     public function store(Request $request)

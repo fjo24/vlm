@@ -12,6 +12,8 @@
                             <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png"/>
                             
                             <link href="{{ asset('css/pages/layouts/header.css') }}" rel="stylesheet">
+                            <link href="{{ asset('css/pages/productos.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/pages/menuproductos.css') }}" rel="stylesheet">
                             <link href="{{ asset('css/pages/desplegable.css') }}" rel="stylesheet">
                                 <link href="{{ asset('css/pages/layouts/footer.css') }}" rel="stylesheet">
                                     @yield('css')

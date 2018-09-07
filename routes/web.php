@@ -18,6 +18,16 @@ Route::post('logindistribuidor', 'Auth\LoginDistribuidorController@login')->name
 
 Route::get('/home', 'Adm\AdminController@admin')->name('home');
 
+//EMPRESAS
+Route::get('/empresa', 'PaginasController@empresa')->name('empresa');
+
+//CONTACTO
+Route::get('/contacto', 'PaginasController@contacto')->name('contacto');
+Route::post('enviar-mailcontacto', [
+    'uses' => 'PaginasController@enviarmailcontacto',
+    'as'   => 'enviarmailcontacto',
+]);
+
 //REGISTRO DE DISTRIBUIDORES
 Route::get('registro', ['uses' => 'DistribuidorController@index', 'as' => 'registro']);
 Route::post('/registro', ['uses' => 'DistribuidorController@store', 'as' => 'cliente.store']);

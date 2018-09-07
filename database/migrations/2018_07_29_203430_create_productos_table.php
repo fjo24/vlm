@@ -22,7 +22,7 @@ class CreateProductosTable extends Migration
             $table->string('orden')->nullable();
             $table->string('video')->nullable();
             $table->string('video_titulo')->nullable();
-            $table->string('video_descripcion')->nullable();
+            $table->text('video_descripcion')->nullable();
             $table->enum('visible', ['publico', 'privado', 'ambos']);
             $table->enum('oferta', ['promocion', 'descuento', 'ninguna'])->nullable();
             $table->boolean('destacado')->default('0');

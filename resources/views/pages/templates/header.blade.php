@@ -36,59 +36,116 @@
             <div class="row">
                 <div class="col l12 m12 s12 center" style="height: 45px;">
                     <ul class="item-left center hide-on-med-and-down">
-                    @if($activo=='videos')
-                <li class="items_header">
-                    <a class="activo" href="{{ url('/empresa') }}">
-                        EMPRESA
-                    </a>
-                </li>
-                @else
-                <li class="items_header">
-                    <a href="{{ url('/empresa') }}">
-                        EMPRESA
-                    </a>
-                </li>
-                @endif
-
-                <li class="items_header" id="menu_productos">
-                    <a class="activo prod_menu" href="">
-                        PRODUCTOS
-                    </a>
-
-                            <ul style="margin-top: -16%!important;">
-                            @foreach($categorias as $categoria)
-                        <li class="menu_cate">
-                            <a href="{{ route('productos', $categoria->id)}}" style="text-transform: lowercase;padding-top: 5%;">
-                                {!! $categoria->nombre!!}
+                        @if($activo=='empresa')
+                        <li class="items_header">
+                            <a class="activo" href="{{ url('/empresa') }}">
+                                EMPRESA
                             </a>
                         </li>
-                        @endforeach
-                    </ul>
+                        @else
+                        <li class="items_header">
+                            <a href="{{ url('/empresa') }}">
+                                EMPRESA
+                            </a>
                         </li>
-                    <li class="items_header">
-                    <a href="" style="    width: 260px;">
-                        QUIERO SER DISTRIBUIDOR
-                    </a>
+                        @endif
+
+                    <li class="items_header" id="menu_productos">
+                        <a class="activo prod_menu" href="">
+                            PRODUCTOS
+                        </a>
+
+                                <ul style="margin-top: -16%!important;">
+                                @foreach($categorias as $categoria)
+                            <li class="menu_cate">
+                                <a href="{{ route('productos', $categoria->id)}}" style="text-transform: lowercase;padding-top: 5%;">
+                                    {!! $categoria->nombre!!}
+                                </a>
+                            </li>
+                            @endforeach
+                        </ul>
+                            </li>
+                        <li class="items_header">
+                        <a href="" style="    width: 260px;">
+                            QUIERO SER DISTRIBUIDOR
+                        </a>
+                        </li>
+                        @if($activo=='contacto')
+                        <li class="items_header">
+                            <a class="activo" href="{{ url('/contacto') }}">
+                                CONTACTO
+                            </a>
+                        </li>
+                        @else
+                        <li class="items_header">
+                            <a href="{{ url('/contacto') }}">
+                                CONTACTO
+                            </a>
+                        </li>
+                        @endif
+                        <li  class="items_header" style="    margin-right: 1%;padding-top: 1.3%;    border-right: 1px solid;
+    height: 20px;margin-top: 1%;">
+                        <a class="lupa" href="" style="margin-right: 0px;top: -13px;width: 90px;">
+                            <img alt="" src="{{asset('img/layouts/lupa.png')}}">
+                            </img>
+                        </a>
+                        </li>
+                    @if(Auth::user())
+                    <li class="items_header" style="    margin-left: 1%;padding-top: 1%;width: 4%;">
+                        <a class="" href="" style="margin-right: 0px;bottom: 3px;">
+                            <img alt="" src="{{asset('img/layouts/zonaprivada.png')}}">
+                            </img>
+                        </a>
                     </li>
-                    <li class="items_header">
-                    <a href="">
-                        CONTACTO
-                    </a>
+                    @else
+                    <li class="dropdown-trigger hide-on-med-and-down" data-target="dropdown1">
+                        <a href="zonaprivada/productos" style="color: #F07D00;margin-top: 11%;">
+                            <img alt="" src="{{asset('img/layouts/zonaprivada.png')}}">
+                            </img>
+                        </a>
                     </li>
-                    <li  class="items_header" style="    margin-right: 1%;padding-top: 1.3%;    border-right: 1px solid;
-height: 20px;margin-top: 1%;">
-                    <a class="lupa" href="" style="margin-right: 0px;top: -13px;width: 90px;">
-                        <img alt="" src="{{asset('img/layouts/lupa.png')}}">
-                        </img>
-                    </a>
-                    </li>
-                    <li  class="items_header" style="    margin-left: 1%;padding-top: 1%;width: 4%;">
-                    <a class="" href="" style="margin-right: 0px;bottom: 3px;">
-                        <img alt="" src="{{asset('img/layouts/zonaprivada.png')}}">
-                        </img>
-                    </a>
-                    </li>
-            </ul>
+                    @endif
+                    <!-- Dropdown LOGIN -->
+                <div class="areaprivada">
+                    <ul class="dropdown-content" id="dropdown1" style="background: none, width:400px!important; height: 282px!important;">
+                        <div class="container" style="background: #FAFAFA; margin-top: 19px !important; outline: none; width: 282px;height: 62px;">
+                            {!!Form::open(['route'=>'logindistribuidor', 'method'=>'POST'])!!}
+                            <div class="row">
+                        <div class="input-field col s12">
+                            <label for="Usuario" style="height: 65%;">Usuario</label>
+                            <input class="" name="username" type="text" style="border-bottom: 1px solid black;margin-top: 11%;">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="password" style="height: 65%;">Contraseña</label>
+                            <input class="" name="password" type="password" style="border-bottom: 1px solid black;margin-top: 11%;">
+                        </div>
+                    </div>
+                            <style type="text/css">
+                                .color-del-boton{
+                 background-color: #01A0E2;
+            }
+            .color-del-boton:hover{
+                 background-color: #01A0E2;
+            }
+                            </style>
+                            <div class="col s12" style="position: relative;right: 24%;margin-top: 9%;
+    margin-bottom: 2%;">
+                                <input class="waves-effect waves-light btn right colorboton" style="color: white;font-family: 'Lato';font-weight: bold;padding-top: 4%;" type="submit" value="INGRESAR">
+                                </input>
+                            </div>
+                            <li class="center" style="font-size: 12px;color: pink; text-decoration: none;">
+                                <a href="{{ url('registro') }}" style="color: #F07D00!important; text-align: center;">
+                                    CREAR UNA CUENTA NUEVA
+                                </a>
+                            </li>
+                            {!!Form::close()!!}
+                        </div>
+                    </ul>
+                </div>
+                <!-- Dropdown LOGIN FIN -->
+                </ul>
 
                 </div>
             </div>

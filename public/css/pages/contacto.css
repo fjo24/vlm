@@ -1,0 +1,44 @@
+section.contacto h2 {
+	color: #BE0000;
+	font-size: 30px;
+	font-weight: 700;
+	letter-spacing: 3px;
+	margin: 0;
+	margin-bottom: 15px;
+	text-transform: uppercase;
+}
+
+section.contacto {
+	    padding-top: 34px;
+
+	padding-bottom: 40px;
+}
+
+section.contacto .boton{
+	height: 36px;
+	width: auto;
+	font-size: 13px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	color: #32398E;
+	border: 1px solid #32398E;
+	display: inline-block;
+	line-height: 36px;
+	padding: 0 40px;
+	cursor: pointer;
+	transition: 0.3s;
+	margin-top: 15px;
+	background-color: #fff;
+}
+
+section.contacto .boton:hover{
+	background-color: #32398E;
+	color: #FDF9EB;
+	transition: 0.3s;
+}
+
+.complete{
+	font-size: 18px;
+	color: #85B7E6!important;
+}
