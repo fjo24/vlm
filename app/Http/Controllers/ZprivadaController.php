@@ -8,6 +8,7 @@ use App\Dato;
 use App\Descuento;
 use App\Pedido;
 use App\Producto;
+use App\Banner;
 use App\Modelo;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -16,17 +17,33 @@ use Illuminate\Support\Facades\Mail;
 
 class ZprivadaController extends Controller
 {
-    public function productos()
-    {
-        $activo    = 'pedidos';
-        
 
-        return view('privada.productos', compact('modelos', 'diferencia', 'proximo', 'descuentos', 'categorias', 'shop', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items'));
+    public function productos($id)
+    {
+        $activo        = 'productos';
+        $todos = 'si';
+        $categoria     = Categoria::find($id);
+        $productos     = Producto::orderBy('orden', 'ASC')->Where('categoria_id', $id)->get();
+        $ready         = 0;
+
+        return view('privada.pedidos.productos', compact('categoria', 'productos', 'activo', 'ready', 'todos'));
     }
+
+    public function productoinfo($id)
+    {
+        $p     = Producto::find($id);
+        $categoria = Categoria::find($p->categoria_id);
+        $ready         = 0;
+        $relacionados  = Producto::OrderBy('orden', 'ASC')->Where('categoria_id', $p->categoria_id)->get();
+        $activo        = 'productos';
+        $productos     = Producto::OrderBy('categoria_id', 'ASC')->get();
+
+        return view('privada.pedidos.productoinfo', compact('categoria', 'productos', 'ready', 'activo', 'p', 'relacionados'));
+    }
+
 
     public function add(Request $request)
     {
-        $descuentos  = Descuento::OrderBy('porcentaje', 'ASC')->get();
         $activo    = 'productos';
         $carrito   = Cart::content();
         $items     = $carrito->all();
@@ -44,24 +61,19 @@ class ZprivadaController extends Controller
                 break;
             }
         }
-        
-        $model = Modelo::find($request->modelo_id);
-        $codigo = $model->codigo;
-        $medida = $model->medida;
-        $categoria = $producto->categoria->nombre;
-        foreach ($producto->rubros as $rub) {
-            $rubro = $rub->nombre;
-            if ($im == 0) {
+
+        foreach($producto->modelos as $modelo){
+            $codigo = $modelo->codigo;
+            if($ready == 0){
                 break;
             }
         }
         
+        $categoria = $producto->categoria->nombre;     
 
         if ($request->cantidad > 0) {
-            Cart::add(['id' => $producto->id, 'name' => $producto->nombre, 'price' => $producto->precio, 'qty' => $request->cantidad, 'options' => ['orden' => $producto->orden, 'imagen' => $imagen, 'categoria' => $categoria, 'rubro' => $rubro, 'codigo' => $codigo, 'medida' => $medida, 'iva' => $producto->iva, 'aplica_desc' => $producto->aplica_desc]]);
-            //dd($categoria);
-//            dd($items);
-            return redirect()->route('zproductos', compact('shop', 'medida', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items', 'codigo', 'desc', 'iva'));
+            Cart::add(['id' => $producto->id, 'name' => $producto->nombre, 'price' => $producto->precio, 'qty' => $request->cantidad, 'options' => ['orden' => $producto->orden, 'imagen' => $imagen, 'categoria' => $categoria, 'codigo' => $codigo]]);
+            return redirect()->route('carrito', compact('shop', 'medida', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items', 'codigo', 'desc', 'iva'));
         } else {
             return back();
         }
@@ -71,7 +83,6 @@ class ZprivadaController extends Controller
     {
 
         $activo = 'carrito';
-        $descuentos  = Descuento::OrderBy('porcentaje', 'ASC')->get();
         $total_items = 0;
         $subtotal    = Cart::Subtotal();
         $total       = Cart::Total();
@@ -94,75 +105,23 @@ class ZprivadaController extends Controller
             
         }
 
-      //  dd($total_items);
-        foreach ($descuentos as $descuento) {
-            if ($total_items >= $descuento->minimo) {
-                $desc    = $descuento->porcentaje;
-                $id_desc = $descuento->id;
-                $sw = 1;
-            } else {
-                if ($sw=1) {
-                    break;
-                }else{                    
-                    $desc    = 0;
-                    $id_desc = null;
-                }
-            }
-        }
-//ubicar la diferencia para proximo descuento str_replace(array(',','.','*','/')
-        $max               = Descuento::all()->max('minimo');
-        $maximo = Descuento::Where('minimo', $max)->first();
-        //dd($maximo);
-        $diferencia=null;
-        if ($maximo->id==$id_desc) {
-            $diferencia==null;
-        }elseif($total_items>0){
-        $proximo = Descuento::find($id_desc+1);
-        $diferencia = $proximo->minimo-$total_items;
-        }else{
-            $proximo = Descuento::first();
-            $diferencia = $proximo->minimo;
-        }
-
-        if (count($carrito)>0) {
-            # code...
-        foreach (Cart::content() as $row) {
-
-                $constante = $desc/100;
-               // dd($constante);
-                $costo_item = $row->price*$row->qty;
-               // dd($costo_item);
-                $descuento_item = $costo_item*$constante;
-                //dd($descuento_item);
-                $r_iva=($costo_item-$descuento_item)*$row->options->iva;
-                //dd($r_iva);
-                $iva_p = $r_iva/100;
-                //dd($iva_p);
-                $total_iva = $total_iva + $iva_p;
-                $descuento_total = $descuento_item + $descuento_total;
-
-        }
-        //dd($descuento_total);
-    }
-$constante = $desc/100;
-
 //dd($desc);
 //descuento en pesos
         $descuento = $descuento_total;
 //iva
         $subtotal_desc = $subtotal-$descuento;
-        $iva = $total_iva;
-//total
-        $totales = ($subtotal-$descuento)+$iva;
+$constante = 21/100;
+$iva = ($subtotal*$constante);
+
+        $totales = $subtotal+$iva;
       //  $descuento = $total;
         }
-        return view('privada.carrito', compact('activo', 'constante','desc', 'descuento', 'iva', 'totales', 'descuentos', 'diferencia', 'proximo'));
+        return view('privada.pedidos.carrito', compact('activo', 'constante','desc', 'descuento', 'iva', 'totales', 'descuentos', 'diferencia', 'proximo'));
     }
 
     public function send(Request $request)
     {
         $fecha       = Carbon::now()->format('Y-m-d');
-        $descuentos  = Descuento::OrderBy('porcentaje', 'ASC')->get();
         $activo      = 'carrito';
         $total_items = 0;
         $dato        = Dato::where('tipo', 'email')->first();
@@ -173,54 +132,12 @@ $constante = $desc/100;
         $desc = 0;
         $id_desc = null;
 
-        $total      = str_replace(',', '', $total);
-        $subtotal   = str_replace(',', '', $subtotal);
-
-        foreach (Cart::content() as $row) {
-            if ($row->options->aplica_desc==1) {
-            $total_items = $total_items + $row->qty;
-            }
-            $r_iva=($row->price*$row->qty)*$row->options->iva;
-            $iva_p = $r_iva/100;
-            $total_iva = $total_iva + $iva_p;
-        }
-        foreach ($descuentos as $descuento) {
-            if ($total_items >= $descuento->minimo) {
-                $desc    = $descuento->porcentaje;
-                $id_desc = $descuento->id;
-                $sw = 1;
-            } else {
-
-                if ($sw=1) {
-                    break;
-                }else{                    
-                    $desc    = 0;
-                    $id_desc = null;
-                }
-            }
-        }
-//descuento en pesos
-        $constante = $desc/100;
-        $descuento = $subtotal*$constante;
-//iva
-        $subtotal_desc = $subtotal-$descuento;
-//total
-       // dd($request->totales);
-        $totales = $request->totales;
-        $totales      = str_replace(',', '', $totales);
         $pedido               = new Pedido;
         $pedido->fecha        = $fecha;
-        $pedido->total        = $totales;
-        $pedido->subtotal     = $request->total_con_descuento;
-        $total_iva            = number_format($request->total_iva, 2, '.', ',');
-        $pedido->iva          = $total_iva;
-        $pedido->fecha        = $fecha;
-        $pedido->descuento_id = $id_desc;
+        $pedido->iva          = $request->iva;
+        $pedido->subtotal     = $request->total;
+        $pedido->total        = $request->totales;
         $pedido->user_id      = Auth()->user()->id;
-        $pedidoid             = Pedido::all()->max('id');
-        $pedidoid++;
-        //dd($pedidoid);
-        //dd(count($carrito));
         $pedido->save();
 
         foreach (Cart::content() as $row) {
@@ -233,7 +150,7 @@ $constante = $desc/100;
             $total_costo = $total_ivap + $costo;
             //$idproducto = $row->rowId
             $total_items = $total_items + $row->qty;
-            $pedido->productos()->attach($producto, ['cantidad' => $row->qty, 'pedido_id' => $pedidoid, 'producto_id' => $row->id, 'costo' => $row->price * $row->qty, 'iva' => $total_ivap, 'total' => $total_costo]);
+            $pedido->productos()->attach($producto, ['cantidad' => $row->qty, 'pedido_id' => $pedido->id, 'producto_id' => $row->id, 'costo' => $row->price * $row->qty, 'total' => $total_costo]);
         }
 
         $carrito = Cart::content();
@@ -252,10 +169,10 @@ $constante = $desc/100;
 
         //dd($descuento);
 
-        Mail::send('privada.mailpedido', ['total' => $totales, 'username' => $username, 'nombre' => $nombre, 'apellido' => $apellido, 'social' => $social, 'cuit' => $cuit, 'telefono' => $telefono, 'direccion' => $direccion, 'emailcliente' => $emailcliente, 'items' => $items, 'row' => $row, 'subtotal' => $subtotal, 'mensaje' => $mensaje, 'iva' => $total_iva, 'descuento' => $descuento], function ($message) use ($nombre, $apellido) {
+        Mail::send('privada.mailpedido', ['total' => $pedido->total, 'username' => $username, 'nombre' => $nombre, 'apellido' => $apellido, 'social' => $social, 'cuit' => $cuit, 'telefono' => $telefono, 'direccion' => $direccion, 'emailcliente' => $emailcliente, 'items' => $items, 'row' => $row, 'subtotal' => $pedido->subtotal, 'mensaje' => $mensaje, 'iva' => $pedido->iva], function ($message) use ($nombre, $apellido) {
 
             $dato = Dato::where('tipo', 'email')->first();
-            $message->from('info@aberturastolosa.com.ar', 'MAER | Pedidos');
+            $message->from('info@aberturastolosa.com.ar', 'VLM | Pedidos');
 
             $message->to($dato->descripcion);
 
@@ -289,32 +206,10 @@ $constante = $desc/100;
     public function listadeprecios()
     {
         $activo   = 'listadeprecios';
+        $banner = Banner::Where('seccion', 'lista')->first();
         $catalogo = Catalogo::orderBy('created_at', 'ASC')->first();
 
-        return view('privada.listadeprecios', compact('activo', 'catalogo'));
-    }
-
-    public function historico()
-    {
-        $activo   = 'historico';
-        $pedidos = Pedido::orderBy('id', 'ASC')->Where('user_id', Auth()->user()->id)->get();
-
-        return view('privada.historico', compact('activo', 'pedidos'));
-    }
-
-    public function detalle($id)
-    {
-        $activo   = 'historico';
-        $cien = 100;
-        $pedido = Pedido::find($id);
-        $descuento = 0;
-        if(isset($pedido->descuento->porcentaje)){
-            $r = $pedido->subtotal*$pedido->descuento->porcentaje;
-            $descuento = $r/100;
-        }
-
-        $iva= $pedido->iva;
-        return view('privada.detalle', compact('activo', 'iva','pedido', 'descuento'));
+        return view('privada.listadeprecios', compact('banner', 'activo', 'catalogo'));
     }
 
     public function downloadPdf2($id)
@@ -329,10 +224,10 @@ $constante = $desc/100;
     public function ofertasynovedades()
     {
         $activo    = 'ofertasynovedades';
-        $productos = Producto::OrderBy('orden', 'ASC')->orwhere('tipo', 'novedad')->orwhere('tipo', 'oferta')->get();
+        $productos = Producto::OrderBy('orden', 'ASC')->orwhere('oferta', 'descuento')->orwhere('oferta', 'promocion')->get();
         $ready     = 0;
 
-        return view('privada.ofertasynovedades', compact('productos', 'activo', 'ready'));
+        return view('privada.pedidos.ofertasynovedades', compact('productos', 'activo', 'ready'));
     }
 
 }

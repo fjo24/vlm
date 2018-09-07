@@ -1,0 +1,14 @@
+.div-nombrehome {
+    height: 34px;
+    font-family: 'Asap', sans-serif;
+    display: flex;
+    color: #89B8E6;
+    font-weight: 400!important;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    position: absolute;
+    width: 100%;
+    bottom: 6%;
+
+}

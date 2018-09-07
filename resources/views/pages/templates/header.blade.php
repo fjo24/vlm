@@ -92,14 +92,14 @@
                         </li>
                     @if(Auth::user())
                     <li class="items_header" style="    margin-left: 1%;padding-top: 1%;width: 4%;">
-                        <a class="" href="" style="margin-right: 0px;bottom: 3px;">
+                        <a class="" href="{{ route('listadeprecios') }}" style="margin-right: 0px;bottom: 3px;">
                             <img alt="" src="{{asset('img/layouts/zonaprivada.png')}}">
                             </img>
                         </a>
                     </li>
                     @else
                     <li class="dropdown-trigger hide-on-med-and-down" data-target="dropdown1">
-                        <a href="zonaprivada/productos" style="color: #F07D00;margin-top: 11%;">
+                        <a href="" style="color: #F07D00;margin-top: 11%;">
                             <img alt="" src="{{asset('img/layouts/zonaprivada.png')}}">
                             </img>
                         </a>
@@ -132,11 +132,11 @@
                             </style>
                             <div class="col s12" style="position: relative;right: 24%;margin-top: 9%;
     margin-bottom: 2%;">
-                                <input class="waves-effect waves-light btn right colorboton" style="color: white;font-family: 'Lato';font-weight: bold;padding-top: 4%;" type="submit" value="INGRESAR">
+                                <input class="waves-effect waves-light btn right colorboton" style="color: white;font-family: 'Lato';font-weight: bold;padding-top: 4%;background-color: #89B8E6" type="submit" value="INGRESAR">
                                 </input>
                             </div>
                             <li class="center" style="font-size: 12px;color: pink; text-decoration: none;">
-                                <a href="{{ url('registro') }}" style="color: #F07D00!important; text-align: center;">
+                                <a href="{{ url('registro') }}" style="color: #9976D2!important; text-align: center;">
                                     CREAR UNA CUENTA NUEVA
                                 </a>
                             </li>

@@ -175,7 +175,6 @@ border: none;
     position: absolute;
     width: 100%;
     bottom: 6%;
-    padding-top: 4%;
         margin: 0% 5%;
 }
 
@@ -290,7 +289,8 @@ border: none;
 }
 
 .activo{
-    color: #F27D00!important;
+    height: 117%;
+    border-bottom: 3px solid white;
 }
 
 .efecto:hover {

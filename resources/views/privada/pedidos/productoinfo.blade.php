@@ -1,10 +1,10 @@
-@extends('pages.templates.body')
+@extends('privada.templates.body')
 
 @section('titulo', 'Línea Parpen')
 @section('css')
     <link href="{{ asset('css/pages/slider.css') }}" rel="stylesheet">
     <link href="{{ asset('css/pages/productos.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/pages/productoinfo.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/privada/productoinfo.css') }}" rel="stylesheet">
     <link href="{{ asset('css/pages/menuproductos.css') }}" rel="stylesheet">
     <link href="{{ asset('css/pages/banner.css') }}" rel="stylesheet">
 @endsection
@@ -29,7 +29,7 @@
             <div class="col l12 m12 s12" style="padding-right: 0px;padding-left: 22px;">
                 <div class="col l3 s12 m3">
                                             <div class="menuproductos">    
-                                                @include('pages.templates.menu')
+                                                @include('privada.templates.menu')
                                             </div>
                                         </div>
                 <div class="galeria2 col l9 m9 s12">
@@ -88,20 +88,36 @@
                             <div class="contenidoproducto">    
                                 {!! $p->contenido !!}
                             </div>
+                            {!! Form::open(['route'=>'carrito.add','METHOD'=>'POST'])!!}
+                            <div><input type="hidden" value="{{$p->id}}" name="id"></div>
+                            <div class="col l12 m12 s12" style="padding-left: 0;margin-bottom: 5%;">
+                                <div class="col l4 m4 s4" style="padding-left: 0;">
+<input type="number" name="cantidad" value="1" style="width: 46px;" required>
+                                    <label for="cantidad">Unidades</label>
+                                </div>
+                                <div class="col l8 m8 s8 right">
+                                    <span class="right" style="font-family: 'Lato'; font-size: 26px;color: #2B2B2B;">
+                                    {{ '$'.number_format($p->precio, 2, ',','.') }}
+                                    </span><br>
+                                    <hr style="margin-top: 8%;">
+                                    <i><span class="right">Los precios no incluyen IVA</span></i>
+                                </div>
+                            </div>
+                            <div class="right">
+                                
                                <a href="{{ route('contacto', $p->nombre) }}">
-        <button class="pedido btn btn-default left" href="" style="background-color: #85b7e6;">
+        <button type="submit" class="pedido btn btn-default left" href="" style="background-color: #85b7e6;width: 212px;">
+               <i class="material-icons">add_shopping_cart</i> 
             <span class="rpedido">
-                
-            CONSULTAR
+                AÑADIR AL CARRITO
             </span>
         </button>
     </a>
+                            </div>
+{!!Form::close()!!}
                         </div>
               
                     </div>
-
-
-
                 @isset($p->video)
                     <div class="masproducto col l12 m12 s12">
                         <div class="col l6 m12 s12">

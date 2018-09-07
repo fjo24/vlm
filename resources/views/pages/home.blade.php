@@ -3,6 +3,7 @@
 @section('css')
 <link href="{{ asset('css/pages/slider.css') }}" rel="stylesheet"/>
 <link href="{{ asset('css/pages/destacados.css') }}" rel="stylesheet"/>
+<link href="{{ asset('css/pages/home.css') }}" rel="stylesheet"/>
 @endsection
 @section('contenido')
 <div class="carousel carousel-slider center" data-indicators="true">
@@ -48,7 +49,7 @@
                         </img>
                     </div>
                 </div>
-                <div class="div-nombre center">
+                <div class="div-nombrehome center" style="    position: relative;">
                     {!!$producto->nombre !!}
                 </div>
                 <div class="div-nombrecat center">

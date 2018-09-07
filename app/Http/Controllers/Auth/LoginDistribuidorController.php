@@ -10,7 +10,7 @@ class LoginDistribuidorController extends Controller
 {
     use AuthenticatesUsers;
 
-    protected $redirectTo = '/zonaprivada/productos';
+    protected $redirectTo = '/zonaprivada/listadeprecios';
 
     public function __construct()
     {

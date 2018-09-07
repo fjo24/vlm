@@ -59,3 +59,7 @@
         width: 166px;
     }
 }
+
+.cuadradas img{
+    border: 1px solid #C9C9C9!important;
+}

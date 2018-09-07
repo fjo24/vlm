@@ -18,7 +18,7 @@ class AddBannersTable extends Migration
             $table->string('imagen');
             $table->text('texto1')->nullable();
             $table->text('texto2')->nullable();
-            $table->enum('seccion', ['empresa', 'quiero', 'productos']);
+            $table->enum('seccion', ['empresa', 'quiero', 'productos', 'lista', 'carrito', 'ofertas']);
             $table->timestamps();
         });
     }

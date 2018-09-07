@@ -34,7 +34,6 @@ Route::post('/registro', ['uses' => 'DistribuidorController@store', 'as' => 'cli
 Route::post('/nuevousuario', ['uses' => 'DistribuidorController@registroStore', 'as' => 'registro.store']);
 
 //PRODUCTOS FILTRADOS POR CATEGORIAS
-
 Route::get('productos/{id}', 'PaginasController@productos')->name('productos');
 
 //CATEGORIAS
@@ -102,9 +101,34 @@ Route::get('productoinfo/{id}', 'PaginasController@productoinfo')->name('product
     Route::resource('users', 'Adm\UsersController')->middleware('admin');
 
     /*------------METADATOS----------------*/
-    Route::resource('metadatos', 'adm\MetadatosController');
+    Route::resource('metadatos', 'adm\MetadatosController');  
+});
 
     //****************************************ZONA PRIVADA**************************************************************************************************************************************************
-	Route::get('/zonaprivada/productos', 'ZprivadaController@productos')->name('zproductos')->middleware('auth');
-    
+Route::get('/zonaprivada/productos', 'ZprivadaController@productos')->name('zproductos')->middleware('auth');
+//BUSCADOR
+Route::post('/buscador', ['uses' => 'BuscadorController@getProducts', 'as' => 'buscador']);
+
+
+//LISTADO DE PRECIOS
+Route::get('/zonaprivada/listadeprecios', 'ZprivadaController@listadeprecios')->name('listadeprecios')->middleware('auth');
+// Rutas de reportes pdf desde la web
+    Route::get('pdf2/{id}', ['uses' => 'ZprivadaController@downloadPdf2', 'as' => 'file-pdf2']);
+
+//PRODUCTOS FILTRADOS POR CATEGORIAS EN ZONA PRIVADA
+Route::get('/zonaprivada/productos/{id}', 'ZprivadaController@productos')->name('zpproductos');
+
+//INFO DE PRODUCTO EN ZONA PRIVADA
+Route::get('/zonaprivada/productoinfo/{id}', 'ZprivadaController@productoinfo')->name('zproductoinfo');
+
+//NOVEDADES Y OFERTAS
+Route::get('/zonaprivada/ofertasynovedades', 'ZprivadaController@ofertasynovedades')->name('ofertasynovedades')->middleware('auth');
+
+
+//CARRITO
+Route::group(['prefix' => 'carrito'], function () {
+    Route::post('add', ['uses' => 'ZprivadaController@add', 'as' => 'carrito.add'])->middleware('auth');
+    Route::get('carrito', ['uses' => 'ZprivadaController@carrito', 'as' => 'carrito'])->middleware('auth');
+    Route::get('delete/{id}', ['uses' => 'ZprivadaController@delete', 'as' => 'carrito.delete'])->middleware('auth');
+    Route::post('enviar', ['uses' => 'ZprivadaController@send', 'as' => 'carrito.enviar'])->middleware('auth');
 });

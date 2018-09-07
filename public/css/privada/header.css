@@ -1,0 +1,97 @@
+.superior{
+    height: 135px;
+}
+
+.logodeyse{
+    padding-top: 3%!important;
+}
+
+.logonewdays{
+    padding-top: 4%!important;
+}
+
+.logovlm{
+    padding-top: 5%!important;
+}
+
+header{
+    height: 180px;
+}
+
+header .principal {
+    height: 180px!important;
+    background-color: #ECECEC;
+    font-family: 'Asap';
+}
+
+header .superior {
+    height: 135px!important;
+    background-color: #ECECEC;
+    font-family: 'Asap';
+    margin-bottom: 0px;
+}
+
+header .inferior {
+    height: 45px!important;
+    background-color: #806EA8;
+    font-family: 'Asap';
+}
+
+header .bloque1{
+    width: 42%!important;
+}
+
+header .inferior{
+    font-size: 17px;
+}
+
+nav a {
+    color: #fff;
+    font-family: 'Asap';
+}
+
+header .lupa img{
+    padding-right: 3%;
+}
+
+header .inferior a{
+        position: relative;
+    bottom: 8px;
+}
+
+.dropdown-content {
+    background-color: #fafafa!important;
+    margin: 0;
+    display: none;
+    min-width: 100px;
+    overflow-y: auto;
+    opacity: 0;
+    position: absolute;
+    right: 0%!important;
+    left: 73%!important;
+    height: 314px!important;
+        top: 28.5%!important;
+    width: 305px!important;
+    z-index: 9999;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  1180 px <<<<<<*/
+@media only screen and (max-width: 600px) {
+    header .superior {
+        height: 276px!important;
+        background-color: #ECECEC;
+        font-family: 'Asap';
+        margin-bottom: 0px;
+    }
+
+    .right {
+    float: center !important;
+        margin-right: 14%;
+    }
+}
+
+.items_header{
+    margin: 0% 3%;
+}

@@ -24,7 +24,7 @@
 			{!!Form::model($banner, ['route'=>['banners.update',$banner->id], 'method'=>'PUT', 'files' => true])!!}
 				<div class="row">
 					<div class="input-field col l6 s12">
-						{!! Form::select('seccion', ['quiero' => 'quiero', 'empresa' => 'empresa', 'productos' => 'productos'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione sección']) !!}
+						{!! Form::select('seccion', ['quiero' => 'quiero', 'empresa' => 'empresa', 'productos' => 'productos', 'lista' => 'lista de precios', 'carrito' => 'carrito', 'ofertas' => 'ofertas'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione sección']) !!}
 					</div>
 					<div class="file-field input-field col l6 s12">
 						<div class="btn">
