@@ -12,7 +12,7 @@
 </div>
 <div class="container" style="width: 90%">
     <div class="row toptab">
-        <div class="col s12 m6">
+        <div class="col s12 m6"> 
             <span class="descripcion_empresa">
                 {!! $empresa->descripcion !!}
             </span>

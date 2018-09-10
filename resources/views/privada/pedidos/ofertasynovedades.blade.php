@@ -1,33 +1,45 @@
 @extends('privada.templates.body')
 
 @section('titulo', 'VLM')
-
+@section('css')
+<link href="{{ asset('css/privada/zproductos.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('css/pages/banner.css') }}" rel="stylesheet">
+@endsection
 @section('contenido')
+<div class="seccion-banner" style="background: url(/{!! $banner->imagen !!});">
+    <div class="btexto" style="padding-top: 6%!important;">
+        <div class="tbanner">
+            <i>
+                {!! $banner->texto1 !!}
+            </i>
+        </div>
+    </div>
+</div>
 <link href="{{ asset('css/privada/zproductos.css') }}" rel="stylesheet" type="text/css"/>
 <div class="container" style="width: 70%;">
-    <div class="ofertaynovedad">OFERTAS Y NOVEDADES</div>
     <div class="row">
-        <div class="galeria col l12 m12 s12">
+        <div class="galeria col l12 m12 s12" style="width: 100%!important;margin-top: 85px;padding-left: 20px!important;padding-right: 0px!important;">
             @foreach($productos as $prod)
             @if($prod->visible!='privado')
-            <a href="{{ route('productoinfo', $prod->id)}}">
+            <a href="{{ route('zproductoinfo', $prod->id)}}">
                 <div class="col l4 m12 s12 oyn">
                     @foreach($prod->imagenes as $img)
-                    <div class="efecto">
-                        <span class="central">
-                        @if($prod->tipo=='novedad')
-                            <img class="responsive-img" src="{{ asset('img/nuevo.png') }}"/> 
+                    <div class="efecto" style="margin: 0">
+                        @if($prod->oferta=='descuento')
+                            <img class="responsive-img" src="{{ asset('img/descuento.png') }}"/> 
                         @else
-                            <img class="responsive-img" src="{{ asset('img/oferta.png') }}"/> 
+                            <img class="responsive-img" src="{{ asset('img/promocion.png') }}"/> 
                         @endif
-                        </span>
                     </div>
                     <div class="im">
                     <img class="responsive-img" src="{{ asset($img->imagen) }}"/>
                     </div>
-                    <h2 class="center">
-                        {{ $prod->nombre }}
-                    </h2>
+                    <div class="div-nombrehome center" style="    position: relative;">
+                    {!!$prod->nombre !!}
+                </div>
+                <div class="div-nombrecat center" style="color:#A3A3A3">
+                    {!!$prod->categoria->nombre !!}
+                </div>
                     @if($ready == 0)    
                                         @break;
                                     @endif

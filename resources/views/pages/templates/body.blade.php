@@ -75,12 +75,9 @@ header('Access-Control-Allow-Origin: *');
 
   });
 
-
-        $(".collapsible").collapsible()({
-          
-          });
-
-
+$(document).ready(function(){
+    $('.modal').modal();
+  });
 
         $('.dropdown-button').dropdown({
           hover: true

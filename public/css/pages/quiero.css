@@ -17,16 +17,20 @@
 }
 
 .nombre_empresa{
-  font-size: 32px;
-    color: #806EA8;
+      font-size: 44px;
+    color: #9976D2;
     font-family: 'Asap';
-    font-weight: 400;
 }
 
 .descripcion_empresa{
     font-size: 22px;
-    color: #B0B0B0;
+    color: #86B7E7;
     font-family: 'Asap';
+}
+
+.descripcion_empresa p{
+      margin: 0;
+          margin-top: 4%;
 }
 
 .toptab{
@@ -37,7 +41,11 @@
   width: 80%;
 }
 
-.contenido_empresa{
+.contenido_empresa {
     font-size: 17px;
-    color: #5F5F5F;
+    color: #595959;
+}
+
+.contenido_empresa p{
+  margin: 0;
 }

@@ -36,7 +36,7 @@
             <div class="row">
                 <div class="col l12 m12 s12 center" style="height: 45px;">
                     <ul class="item-left center hide-on-med-and-down">
-                        @if($activo=='empresa')
+                        @if($activo=='lista')
                         <li class="items_header">
                             <a class="activo" href="{{ route('listadeprecios') }}">
                                 LISTA DE PRECIOS
@@ -49,13 +49,13 @@
                             </a>
                         </li>
                         @endif
-@if($activo=='pedidos')
+@if($activo=='productos')
                     <li class="items_header" id="menu_productos">
                         <a class="activo prod_menu" href="">
                             PEDIDOS
                         </a>
 
-                                <ul style="margin-top: -16%!important;">
+                                <ul style="margin-top: -21%!important;">
                                 @foreach($categorias as $categoria)
                             <li class="menu_cate">
                                 <a href="{{ route('zpproductos', $categoria->id)}}" style="text-transform: lowercase;padding-top: 5%;">
@@ -71,7 +71,7 @@
                             PEDIDOS
                         </a>
 
-                                <ul style="margin-top: -16%!important;">
+                                <ul style="margin-top: -21%!important;">
                                 @foreach($categorias as $categoria)
                             <li class="menu_cate">
                                 <a href="{{ route('zpproductos', $categoria->id)}}" style="text-transform: lowercase;padding-top: 5%;">
@@ -84,7 +84,7 @@
                         @endif
                             @if($activo=='carrito')
                         <li class="items_header">
-                        <a href="{{ route('carrito') }}" style="">
+                        <a class="activo" href="{{ route('carrito') }}" style="">
                             CARRITO
                         </a>
                         </li>

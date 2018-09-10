@@ -28,6 +28,19 @@ Route::post('enviar-mailcontacto', [
     'as'   => 'enviarmailcontacto',
 ]);
 
+//BUSCADOR
+Route::post('productos/buscar', [
+    'uses' => 'PaginasController@buscar',
+    'as'   => 'buscar',
+]);
+
+//QUIERO SER DISTRIBUIDOR
+Route::get('/quiero', 'PaginasController@quiero')->name('quiero');
+Route::post('enviar-mailquiero', [
+    'uses' => 'PaginasController@enviarmailquiero',
+    'as'   => 'enviarmailquiero',
+]);
+
 //REGISTRO DE DISTRIBUIDORES
 Route::get('registro', ['uses' => 'DistribuidorController@index', 'as' => 'registro']);
 Route::post('/registro', ['uses' => 'DistribuidorController@store', 'as' => 'cliente.store']);
@@ -101,8 +114,12 @@ Route::get('productoinfo/{id}', 'PaginasController@productoinfo')->name('product
     Route::resource('users', 'Adm\UsersController')->middleware('admin');
 
     /*------------METADATOS----------------*/
-    Route::resource('metadatos', 'adm\MetadatosController');  
+    Route::resource('metadatos', 'Adm\MetadatosController');  
+    
 });
+
+    /*------------NEWSLETTERS----------------*/
+    Route::resource('newsletters', 'Adm\NewslettersController');
 
     //****************************************ZONA PRIVADA**************************************************************************************************************************************************
 Route::get('/zonaprivada/productos', 'ZprivadaController@productos')->name('zproductos')->middleware('auth');

@@ -49,27 +49,51 @@
                             </a>
                         </li>
                         @endif
+                        @if($activo=='producto')
+                        <li class="items_header" id="menu_productos">
+                            <a class="activo prod_menu" href="">
+                                PRODUCTOS
+                            </a>
 
-                    <li class="items_header" id="menu_productos">
-                        <a class="activo prod_menu" href="">
-                            PRODUCTOS
-                        </a>
-
-                                <ul style="margin-top: -16%!important;">
-                                @foreach($categorias as $categoria)
-                            <li class="menu_cate">
-                                <a href="{{ route('productos', $categoria->id)}}" style="text-transform: lowercase;padding-top: 5%;">
-                                    {!! $categoria->nombre!!}
-                                </a>
-                            </li>
-                            @endforeach
-                        </ul>
-                            </li>
+                                    <ul style="margin-top: -16%!important;">
+                                    @foreach($categorias as $categoria)
+                                <li class="menu_cate">
+                                    <a href="{{ route('productos', $categoria->id)}}" style="text-transform: lowercase;padding-top: 5%;">
+                                        {!! $categoria->nombre!!}
+                                    </a>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        @else
+                        <li class="items_header" id="menu_productos">
+                            <a class="prod_menu" href="">
+                                PRODUCTOS
+                            </a>
+                                    <ul style="margin-top: -16%!important;">
+                                    @foreach($categorias as $categoria)
+                                <li class="menu_cate">
+                                    <a href="{{ route('productos', $categoria->id)}}" style="text-transform: lowercase;padding-top: 5%;">
+                                        {!! $categoria->nombre!!}
+                                    </a>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        @endif
+                        @if($activo=='quiero')
                         <li class="items_header">
-                        <a href="" style="    width: 260px;">
+                        <a class="activo" href="{{ url('/quiero') }}" style="    width: 260px;">
                             QUIERO SER DISTRIBUIDOR
                         </a>
                         </li>
+                        @else
+                        <li class="items_header">
+                            <a href="{{ url('/quiero') }}"  style="    width: 260px;">
+                                QUIERO SER DISTRIBUIDOR
+                            </a>
+                        </li>
+                        @endif
                         @if($activo=='contacto')
                         <li class="items_header">
                             <a class="activo" href="{{ url('/contacto') }}">
@@ -85,10 +109,30 @@
                         @endif
                         <li  class="items_header" style="    margin-right: 1%;padding-top: 1.3%;    border-right: 1px solid;
     height: 20px;margin-top: 1%;">
-                        <a class="lupa" href="" style="margin-right: 0px;top: -13px;width: 90px;">
+                        <a data-target="modalbuscador" class="lupa iconos-redes modal-trigger" style="margin-right: 0px;top: -13px;width: 90px;">
                             <img alt="" src="{{asset('img/layouts/lupa.png')}}">
                             </img>
                         </a>
+
+                        <!-- Modal Structure -->
+                  <div id="modalbuscador" class="modal">
+                    <div class="modal-content">
+                        <h4><a href="#!" class="right modal-close waves-effect waves-green btn-flat" style="font-family: 'Lato';color: #806EA8;font-weight: bold;">Cerrar</a></h4>
+                        <div class="row">
+                            <h4 style="font-family: 'Source Sans Pro', sans-serif; color: #806EA8">Buscar por nombre de producto</h4>
+                            <div class="col l12 m12 s12" style="">   
+                                {!!  Form::open(['route' => 'buscar', 'method' => 'POST','class' => 'left']) !!}
+                                <div class="lupa">
+                                    <input id="mobile_search" name="nombre" placeholder="" type="search">
+                                    </input>
+                                    <button class="btn waves-effect waves-light z-depth-0" type="submit" name="action" style="background-color: white!important;height: 39px;width: 153px;color: #806EA8;    border: 1px solid;font-family: 'Source Sans Pro', sans-serif;">Buscar
+                                    </button>
+                                </div>
+                                {!! Form::close() !!}
+                            </div>
+                        </div>
+                    </div>
+                  </div>
                         </li>
                     @if(Auth::user())
                     <li class="items_header" style="    margin-left: 1%;padding-top: 1%;width: 4%;">

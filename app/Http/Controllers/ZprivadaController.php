@@ -205,7 +205,7 @@ $iva = ($subtotal*$constante);
 
     public function listadeprecios()
     {
-        $activo   = 'listadeprecios';
+        $activo   = 'lista';
         $banner = Banner::Where('seccion', 'lista')->first();
         $catalogo = Catalogo::orderBy('created_at', 'ASC')->first();
 
@@ -224,10 +224,11 @@ $iva = ($subtotal*$constante);
     public function ofertasynovedades()
     {
         $activo    = 'ofertasynovedades';
+        $banner = Banner::Where('seccion', 'ofertas')->first();
         $productos = Producto::OrderBy('orden', 'ASC')->orwhere('oferta', 'descuento')->orwhere('oferta', 'promocion')->get();
         $ready     = 0;
 
-        return view('privada.pedidos.ofertasynovedades', compact('productos', 'activo', 'ready'));
+        return view('privada.pedidos.ofertasynovedades', compact('productos', 'activo', 'ready', 'banner'));
     }
 
 }

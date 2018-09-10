@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div class="col l12 m12 s12" style="padding-top: 5%;">
-                        <form action="newsletter.php" method="POST" role="form">
+                        {!!Form::open(['route'=>'newsletters.store', 'method'=>'POST', 'files' => true])!!}
                             <div class="form-group col l9 m9 s12 newsbox" style="padding-right: 0px; padding-left: 0px;padding-top: 1.5%;">
                                 <label class="newsletter" for="news">
                                     NEWSLETTER
@@ -31,7 +31,7 @@
                                     Enviar
                                 </button>
                             </div>
-                        </form>
+                        {!!Form::close()!!}
                     </div>
                 </div>
                 <div class="sitemap col l3 m6 s12">

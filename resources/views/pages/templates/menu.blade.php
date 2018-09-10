@@ -15,7 +15,7 @@
         @else
         <div class="collapsible-header" style="text-transform: uppercase;">
         @endif
-            <a href="">
+            <a href="{{ route('productos', $categoria->id) }}">
                 TODOS LOS PRODUCTOS
             </a>
         </div>

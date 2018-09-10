@@ -148,7 +148,7 @@
                     </div>
                     <div class="col l12 m12 s12 relablock" style="margin-top: 2%;">
                     @foreach($p->productos as $relacionado)
-                    <a href="{{ route('productoinfo', $relacionado->id)}}">
+                    <a href="{{ route('zproductoinfo', $relacionado->id)}}">
                         <div class="col l4 m6 s6 categoria-tarjeta">
                             @foreach($relacionado->imagenes as $img)
                             <img class="responsive-img" src="{{ asset($img->imagen) }}"/>

@@ -88,7 +88,7 @@
                             <div class="contenidoproducto">    
                                 {!! $p->contenido !!}
                             </div>
-                               <a href="{{ route('contacto', $p->nombre) }}">
+                               <a href="{{ route('contacto') }}">
         <button class="pedido btn btn-default left" href="" style="background-color: #85b7e6;">
             <span class="rpedido">
                 
