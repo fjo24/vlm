@@ -91,6 +91,30 @@ header .inferior a{
     float: center !important;
         margin-right: 14%;
     }
+
+    header {
+    height: 276px;
+}
+
+.tbanner2 {
+    font-size: 17px!important;
+    width: 85%!important;
+}
+
+.galeriadeproducto {
+    width: 100%!important;
+    height: 57%!important;
+    padding-right: 0px!important;
+}
+
+.masproducto {
+    background-color: #F5F5F5;
+    border: 1px solid #C9C9C9;
+    width: 100%!important;
+    height: 32%;
+    margin-top: 60px;
+    padding: 0!important;
+}
 }
 
 .items_header{

@@ -8,7 +8,7 @@
 @endsection
 @section('contenido')
 <!-- body -->        
-<div class="seccion-banner" style="background: url(/{!! $banner->imagen !!});">
+<div class="seccion-banner" style="background: url({!! $banner->imagen !!});">
     <div class="btexto" style="padding-top: 6%!important;">
         <div class="tbanner">
             <i>
@@ -73,10 +73,12 @@
 					          		{!!Form::text('provincia',null,['class'=>'', 'placeholder'=>'Provincia'])!!}
 					          		<label for="provincia"></label>
 					        	</div>
-					        	<div class="input-field col m6 s12" style="color: black">
-					          		
+					        	<div class="col l12 m12 s12">
+					        		
+					        	<div class="input-field col l6 m6 s12" style="color: black;padding-left: 0;margin-left: -5%;">
+					          		<div class="g-recaptcha" data-sitekey="6LfT-GQUAAAAALDE4kKAhJAYX2I10Ve1PwtaXBQV"></div>
 					        	</div>
-					        	<div class="input-field col m6 s12" style="color: black">
+					        	<div class="input-field col m6 s12" style="color: black;padding-left: 10%;">
 					          		<p>
 								      <label>
 								        <input type="checkbox" required="" />
@@ -84,10 +86,11 @@
 								      </label>
 								    </p>
 					        	</div>
-							    <div class="col s6">
+					        	</div>
+							    <div class="left col l2 m2 s6">
 					        
 					        	<br>
-							      	<button class="btn waves-effect waves-light z-depth-0" type="submit" name="action" style="background-color: white;height: 39px;width: 183px;color: #3F3F3F;    border: 2px solid;font-weight: 500;font-family: 'Montserrat', sans-serif;border-radius: 6px;">Enviar
+							      	<button class="btn waves-effect waves-light z-depth-0" type="submit" name="action" style="background-color: #89B8E6;height: 38px;    width: 100px;color: white;font-weight: 500;    font-family: 'Asap', sans-serif;border-radius: 3px;">Enviar
 									</button>
 								</div>
 					      	</div>

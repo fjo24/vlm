@@ -90,7 +90,7 @@
             <ul class="sidenav sidenav-fixed" id="slide-out">
                 <div class="logo">
                     <a class="brand-logo" href="" id="logo-container">
-                        <img alt="" class="responsive-img" src="{{ asset('img/logo_principal.jpg') }}">
+                        <img alt="" class="responsive-img" src="{{ asset('img/logo_principal.png') }}">
                         </img>
                     </a>
                 </div>
@@ -206,12 +206,12 @@
                                 </li>
                                 <li>
                                     <a href="{{route('categorias.create')}}">
-                                        Crear Sistema
+                                        Crear Categoria
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{route('categorias.index')}}">
-                                        Editar Sistema
+                                        Editar Categoria
                                     </a>
                                 </li>
                                 <li>
