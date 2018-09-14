@@ -45,7 +45,7 @@
 			          				{!!Form::textarea('mensaje', null, ['class'=>'materialize-textarea', 'placeholder'=>'Mensaje'])!!}
 					        	</div>
 							    <div class="col s6">
-					        		<div class="g-recaptcha" data-sitekey="6LfT-GQUAAAAALDE4kKAhJAYX2I10Ve1PwtaXBQV"></div>
+					        		<div class="g-recaptcha" data-sitekey="6LfT-GQUAAAAALDE4kKAhJAYX2I10Ve1PwtaXBQV" required></div>
 					        	<br>
 							      	<button class="btn waves-effect waves-light z-depth-0" type="submit" name="action" style="background-color: white;height: 39px;width: 183px;color: #3F3F3F;    border: 2px solid;font-weight: 500;font-family: 'Montserrat', sans-serif;border-radius: 6px;">Enviar
 									</button>

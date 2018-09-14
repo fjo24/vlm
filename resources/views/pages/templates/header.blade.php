@@ -6,13 +6,13 @@
         <a href="#" data-target="slide-out" class="sidenav-trigger" style=" "><i class="material-icons" style="color: #806EA8;">menu</i></a>
                 <div class="bloque1 col l6 m6 s6">
                     <div class="logodeyse col l6 m6 s12">
-                        <a class="" href="">
+                        <a class="" href="{{ route('inicio') }}">
                             <img alt="" src="{{asset('img/layouts/logodeyse.png')}}">
                             </img>
                         </a>
                     </div>
                     <div class="logonewdays col l6 m6 s12">
-                        <a class="" href="">
+                        <a class="" href="{{ route('inicio') }}">
                             <img alt="" src="{{asset('img/layouts/logonewdays.png')}}">
                             </img>
                         </a>
@@ -22,7 +22,7 @@
                     <div class="col l6 m6 s12">
                     </div>
                     <div class="logovlm right col l6 m6 s12">
-                        <a class="right" href="">
+                        <a class="right" href="{{ route('inicio') }}">
                             <img alt="" src="{{asset('img/layouts/logovlm.png')}}">
                             </img>
                         </a>
@@ -109,7 +109,7 @@
                         @endif
                         <li  class="items_header" style="    margin-right: 1%;padding-top: 1.3%;    border-right: 1px solid;
     height: 20px;margin-top: 1%;">
-                        <a data-target="modalbuscador" class="lupa iconos-redes modal-trigger" style="margin-right: 0px;top: -13px;width: 90px;">
+                        <a data-target="modalbuscador" class="lupa iconos-redes modal-trigger" style="margin-right: 0px;top: -17px;width: 90px;">
                             <img alt="" src="{{asset('img/layouts/lupa.png')}}">
                             </img>
                         </a>
@@ -219,7 +219,7 @@
                 </a>
             </li>
             <li class="bold">
-                <a href="" class="collapsible-header waves-effect waves-admin">
+                <a href="{{ route('productos', 1)}}" class="collapsible-header waves-effect waves-admin">
                     <i class="material-icons">
                         map
                     </i>

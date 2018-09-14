@@ -26,6 +26,8 @@ class SlidersController extends Controller
         $slider          = new Slider();
         $slider->link    = $request->link;
         $slider->orden   = $request->orden;
+        $slider->texto    = $request->texto;
+        $slider->texto2   = $request->texto2;
         $slider->seccion = 'home';
         $id              = Slider::all()->max('id');
         $id++;
@@ -58,6 +60,8 @@ class SlidersController extends Controller
         $slider          = Slider::find($id);
         $slider->link    = $request->link;
         $slider->orden   = $request->orden;
+        $slider->texto    = $request->texto;
+        $slider->texto2   = $request->texto2;
         $slider->seccion = 'home';
         $id              = Slider::all()->max('id');
         $id++;

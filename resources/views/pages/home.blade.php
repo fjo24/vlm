@@ -13,12 +13,14 @@
             @if(isset($slider->texto)||isset($slider->texto2))
             <div class="caption box-cap" style="">
                 <div style="">
-                    <span class="slidertext2">
+                    <div class="slidertext2">
                         {!! $slider->texto !!}
-                    </span>
-                    <span class="slidertext1">
+                    </div>
+                    <div class="slidertext1">
+                    <i>
                         {!! $slider->texto2 !!}
-                    </span>
+                    </i>
+                    </div>
                 </div>
             </div>
             @endif

@@ -47,6 +47,18 @@
 						{!!Form::text('orden', null , ['class'=>'', 'required'])!!}
             </div>
         </div>
+        <div class="row">
+            <div class="col s12">
+                 <div class="input-field col l6 s12">
+                    {!!Form::label('texto:')!!}
+                    {!!Form::text('texto', null , ['class'=>''])!!}
+                </div>
+                <div class="input-field col l6 s12">
+                    {!!Form::label('texto2:')!!}
+                    {!!Form::text('texto2', null , ['class'=>''])!!}
+                </div>
+            </div>
+        </div>
         <div class="col l12 s12 no-padding">
             <button class="boton btn-large right" name="action" type="submit">
                 Crear
