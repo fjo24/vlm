@@ -54,11 +54,10 @@
                             <a class="activo prod_menu" href="">
                                 PRODUCTOS
                             </a>
-
-                                    <ul style="margin-top: -16%!important;">
+                            <ul style="margin-top: -16%!important;">
                                     @foreach($categorias as $categoria)
                                 <li class="menu_cate">
-                                    <a href="{{ route('productos', $categoria->id)}}" style="text-transform: lowercase;padding-top: 5%;">
+                                    <a href="{{ route('productos', $categoria->id)}}" style="padding-top: 5%;">
                                         {!! $categoria->nombre!!}
                                     </a>
                                 </li>
@@ -73,7 +72,7 @@
                                     <ul style="margin-top: -16%!important;">
                                     @foreach($categorias as $categoria)
                                 <li class="menu_cate">
-                                    <a href="{{ route('productos', $categoria->id)}}" style="text-transform: lowercase;padding-top: 5%;">
+                                    <a href="{{ route('productos', $categoria->id)}}" style="padding-top: 5%;">
                                         {!! $categoria->nombre!!}
                                     </a>
                                 </li>
@@ -120,8 +119,8 @@
                         <h4><a href="#!" class="right modal-close waves-effect waves-green btn-flat" style="font-family: 'Lato';color: #806EA8;font-weight: bold;">Cerrar</a></h4>
                         <div class="row">
                             <h4 style="font-family: 'Source Sans Pro', sans-serif; color: #806EA8">Buscar por nombre de producto</h4>
-                            <div class="col l12 m12 s12" style="">   
-                                {!!  Form::open(['route' => 'buscar', 'method' => 'POST','class' => 'left']) !!}
+                            <div class="center col l12 m12 s12" style="">   
+                                {!!  Form::open(['route' => 'buscar', 'method' => 'POST','class' => 'center']) !!}
                                 <div class="lupa">
                                     <input id="mobile_search" name="nombre" placeholder="" type="search">
                                     </input>
