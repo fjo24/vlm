@@ -24,7 +24,7 @@
         <table class="highlight bordered">
             <thead>
                 <td>
-                    Codigo
+                    Nombre
                 </td>
                 <td class="text-right">
                     Acciones
@@ -34,7 +34,7 @@
                 @foreach($modelos as $modelo)
                 <tr>
                     <td>
-                        {!!$modelo->codigo!!}
+                        {!!$modelo->nombre!!}
                     </td>
                     <td class="text-right">
                         <a href="{{ route('modelos.edit',$modelo->id)}}">

@@ -1,6 +1,6 @@
 @extends('adm.layouts.frame')
 
-@section('titulo', 'Listado de productos')
+@section('titulo', 'Presentacion de productos')
 
 @section('contenido')
         @if(count($errors) > 0)
@@ -20,6 +20,7 @@
 </div>
 @endif
 <div class="row">
+<h5>Presentaciones | {!!$producto->nombre!!}</h5>
     <div class="col s12">
         <table class="highlight bordered">
             <thead>
@@ -27,50 +28,40 @@
                     Nombre
                 </th>
                 <th>
-                    Modelo
+                    Precio 1
                 </th>
                 <th>
-                	Categoria
-                </th>
-                <th class="center">
-                    Administrar imagenes
+                    Precio 2
                 </th>
                 <th>
-                    Presentaciones
+                    Precio 3
                 </th>
                 <th class="text-right">
                     Acciones
                 </th>
             </thead>
             <tbody>
-                @foreach($productos as $producto)
+                @foreach($producto->modelos as $modelo)
                 <tr>
                     <td>
-                        {!!$producto->nombre!!}
+                        {!!$modelo->nombre!!}
                     </td>
                     <td>
-                        @foreach($producto->modelos as $modelo)
-                            {!!$modelo->codigo!!}
-                            @if($ready == 0)    
-                                @break;
-                            @endif
-                        @endforeach
-                    </td>
-                     <td>
-                        {!!$producto->categoria->nombre!!}
-                    </td>
-                    <td class="center"><a href="{{ route('imgproducto.lista',$producto->id)}}"><i class="material-icons">image</i></a>
+                        {!!$modelo->pivot->precio1!!}
                     </td>
                     <td>
-                        <a href="{{ route('presentaciones',$producto->id)}}">ver presentaciones</a>
+                        {!!$modelo->pivot->precio2!!}
+                    </td>
+                    <td>
+                        {!!$modelo->pivot->precio3!!}
                     </td>
                     <td class="text-right">
-                        <a href="{{ route('productos.edit',$producto->id)}}">
+                        <a href="{{ route('editpresentacion', ['id' => $producto->id,'modelo' => $modelo->pivot->modelo_id] )}}">
                             <i class="material-icons">
                                 create
                             </i>
                         </a>
-                        {!!Form::open(['class'=>'en-linea', 'route'=>['productos.destroy', $producto->id], 'method' => 'DELETE'])!!}
+                        {!!Form::open(['class'=>'en-linea', 'route'=>['modelos.destroy', $modelo->id], 'method' => 'DELETE'])!!}
                         <button class="submit-button" onclick="return confirm_delete(this);" type="submit">
                             <i class="material-icons red-text">
                                 cancel
@@ -83,7 +74,7 @@
             </tbody>
         </table>
         <br>
-        <a href="{{ route('productos.create') }}">
+        <a href="">
             <div class="col l12 s12 no-padding" href="">
                 <button class="boton btn-large right" name="action" type="submit">
                     Nuevo

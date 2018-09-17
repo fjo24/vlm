@@ -24,8 +24,8 @@
         {!!Form::open(['route'=>'modelos.store', 'method'=>'POST', 'files' => true])!!}
         <div class="row">
             <div class="input-field col l6 s12">
-                {!!Form::label('Codigo:')!!}
-						{!!Form::text('codigo', null , ['class'=>'', 'required'])!!}
+                {!!Form::label('Nombre:')!!}
+                {!!Form::text('nombre', null , ['class'=>'', 'required'])!!}
             </div>
         </div>
         <div class="col l12 s12 no-padding">

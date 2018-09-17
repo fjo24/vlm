@@ -67,6 +67,9 @@ Route::get('productoinfo/{id}', 'PaginasController@productoinfo')->name('product
     /*------------BANNERS----------------*/
     Route::resource('banners', 'Adm\BannersController')->middleware('admin');
 
+    /*------------DISTRIBUIDORES----------------*/
+    Route::resource('distribuidores', 'Adm\DistribuidoresController')->middleware('admin');
+
     /*------------CATALOGOS----------------*/
     Route::resource('catalogos', 'Adm\CatalogosController')->middleware('admin');
     // Rutas de reportes pdf
@@ -98,6 +101,23 @@ Route::get('productoinfo/{id}', 'PaginasController@productoinfo')->name('product
     
     /*------------PRODUCTOS----------------*/
     Route::resource('productos', 'Adm\ProductosController')->middleware('admin');
+    /*------------PRESENTACIONES----------------*/
+    Route::get('productos/{id}/presentaciones', [
+        'uses' => 'Adm\ProductosController@presentaciones',
+        'as'   => 'presentaciones',
+    ])->middleware('admin');
+
+    /*------------EDITAR PRESENTACIONES----------------*/
+    Route::get('productos/editarpresentacion/{id}/{modelo}', [
+        'uses' => 'Adm\ProductosController@editPresentacion',
+        'as'   => 'editpresentacion',
+    ])->middleware('admin');
+    /*-- ACTUALIZAR PRESENTACION --*/
+    Route::put('productos/updatepresentacion/{id}/{modelo}', [
+        'uses' => 'Adm\ProductosController@updatePresentacion',
+        'as'   => 'updatepresentacion',
+    ])->middleware('admin');
+
     /*------------Imagen----------------*/
     Route::get('producto/{producto_id}/imagenes/', 'Adm\ProductosController@imagenes')->name('imgproducto.lista'); //index del modulo imagenes
     //agregar nuevas imagenes de productos
@@ -123,9 +143,6 @@ Route::get('productoinfo/{id}', 'PaginasController@productoinfo')->name('product
 
     //****************************************ZONA PRIVADA**************************************************************************************************************************************************
 Route::get('/zonaprivada/productos', 'ZprivadaController@productos')->name('zproductos')->middleware('auth');
-//BUSCADOR
-Route::post('/buscador', ['uses' => 'BuscadorController@getProducts', 'as' => 'buscador']);
-
 
 //LISTADO DE PRECIOS
 Route::get('/zonaprivada/listadeprecios', 'ZprivadaController@listadeprecios')->name('listadeprecios')->middleware('auth');

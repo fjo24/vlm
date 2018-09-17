@@ -8,7 +8,7 @@ class Producto extends Model
 {
     protected $table    = "productos";
     protected $fillable = [
-        'nombre', 'oferta', 'descripcion', 'contenido', 'categoria_id', 'video', 'video_descripcion', 'video_titulo', 'orden', 'destacado', 'visible', 'precio',
+        'nombre', 'oferta', 'descripcion', 'contenido', 'categoria_id', 'video', 'video_descripcion', 'video_titulo', 'orden', 'destacado', 'visible', 'precio', 'codigo',
     ];
 
     public function categoria()
@@ -18,7 +18,7 @@ class Producto extends Model
 
     public function modelos()
     {
-        return $this->belongsToMany('App\Modelo', 'modelo_producto', 'producto_id', 'modelo_id');
+        return $this->belongsToMany('App\Modelo', 'modelo_producto')->withPivot('precio1', 'precio2', 'precio3');
     }
 
     public function imagenes()

@@ -8,11 +8,11 @@ class Modelo extends Model
 {
     protected $table    = "modelos";
     protected $fillable = [
-        'codigo', 'orden',
+        'nombre','codigo', 'orden',
     ];
 
     public function productos()
     {
-        return $this->belongsToMany('App\Producto'); 
+        return $this->belongsToMany('App\Producto', 'modelo_producto', 'modelo_id', 'producto_id')->withPivot('precio1', 'precio2', 'precio3');
     }
 }

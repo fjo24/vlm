@@ -11,7 +11,7 @@ class Admin
         if (auth()->user()->nivel == 'administrador') {
             return $next($request);
         }
-        return redirect()->route('zproductos');
+        return redirect()->route('listadeprecios');
         //->with('error', 'NO TIENES PERMISO PARA ACCEDER A ESTA AREA')
     }
 }

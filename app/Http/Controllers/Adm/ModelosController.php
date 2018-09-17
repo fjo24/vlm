@@ -10,7 +10,7 @@ class ModelosController extends Controller
 {
     public function index()
     {
-        $modelos = Modelo::orderBy('codigo', 'ASC')->get();
+        $modelos = Modelo::orderBy('nombre', 'ASC')->get();
         return view('adm.modelos.index', compact('modelos'));
     }
 
@@ -23,8 +23,7 @@ class ModelosController extends Controller
     {
 
         $modelo              = new Modelo();
-        $modelo->codigo      = $request->codigo;
-        $modelo->orden       = $request->orden;
+        $modelo->nombre      = $request->nombre;
         $modelo->save();
         return redirect()->route('modelos.index');
     }
@@ -43,8 +42,7 @@ class ModelosController extends Controller
     public function update(Request $request, $id)
     {
         $modelo = Modelo::find($id);
-        $modelo->codigo = $request->codigo;
-        $modelo->orden  = $request->orden;
+        $modelo->nombre      = $request->nombre;
         $modelo->save();
         return redirect()->route('modelos.index');
     }

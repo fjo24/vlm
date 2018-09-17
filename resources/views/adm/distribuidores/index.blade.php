@@ -1,6 +1,6 @@
 @extends('adm.layouts.frame')
 
-@section('titulo', 'Listado de productos')
+@section('titulo', 'Listado de Distribuidores')
 
 @section('contenido')
         @if(count($errors) > 0)
@@ -24,54 +24,68 @@
         <table class="highlight bordered">
             <thead>
                 <th>
-                    Nombre
+                    Nombre de usuario
                 </th>
                 <th>
-                    Modelo
+                    Nombre Completo
                 </th>
                 <th>
-                	Categoria
-                </th>
-                <th class="center">
-                    Administrar imagenes
+                    Razón Social
                 </th>
                 <th>
-                    Presentaciones
+                    Cuit
+                </th>
+                <th>
+                    Telefono
+                </th>
+                <th>
+                    Dirección
+                </th>
+                <th>
+                    Postal
+                </th>
+                <th>
+                	Email
                 </th>
                 <th class="text-right">
                     Acciones
                 </th>
             </thead>
             <tbody>
-                @foreach($productos as $producto)
+                @foreach($distribuidores as $distribuidor)
                 <tr>
                     <td>
-                        {!!$producto->nombre!!}
+                        {!!$distribuidor->username!!}
                     </td>
                     <td>
-                        @foreach($producto->modelos as $modelo)
-                            {!!$modelo->codigo!!}
-                            @if($ready == 0)    
-                                @break;
-                            @endif
-                        @endforeach
-                    </td>
-                     <td>
-                        {!!$producto->categoria->nombre!!}
-                    </td>
-                    <td class="center"><a href="{{ route('imgproducto.lista',$producto->id)}}"><i class="material-icons">image</i></a>
+                        {!!$distribuidor->name!!} {!!$distribuidor->apellido!!}
                     </td>
                     <td>
-                        <a href="{{ route('presentaciones',$producto->id)}}">ver presentaciones</a>
+                        {!!$distribuidor->social!!}
+                    </td>
+                    <td>
+                        {!!$distribuidor->cuit!!}
+                    </td>
+                    <td>
+                        {!!$distribuidor->telefono!!}
+                    </td>
+                    <td>
+                        {!!$distribuidor->direccion!!}
+                    </td>
+                    <td>
+                        {!!$distribuidor->postal!!}
+                    </td>
+                    <td>
+                        {!!$distribuidor->email!!}
                     </td>
                     <td class="text-right">
-                        <a href="{{ route('productos.edit',$producto->id)}}">
+                        <a href="{{ route('distribuidores.edit',$distribuidor->id)}}">
                             <i class="material-icons">
                                 create
                             </i>
                         </a>
-                        {!!Form::open(['class'=>'en-linea', 'route'=>['productos.destroy', $producto->id], 'method' => 'DELETE'])!!}
-                        <button class="submit-button" onclick="return confirm_delete(this);" type="submit">
+                        {!!Form::open(['class'=>'en-linea', 'route'=>['distribuidores.destroy', $distribuidor->id], 'method' => 'DELETE'])!!}
+                        <button class="submit-button" onclick="return confirm('¿Realmente deseas borrar al distribuidor?')" type="submit">
                             <i class="material-icons red-text">
                                 cancel
                             </i>
@@ -82,14 +96,6 @@
                 @endforeach
             </tbody>
         </table>
-        <br>
-        <a href="{{ route('productos.create') }}">
-            <div class="col l12 s12 no-padding" href="">
-                <button class="boton btn-large right" name="action" type="submit">
-                    Nuevo
-                </button>
-            </div>
-        </a>
     </div>
 </div>
 <script src="{{ asset('js/eliminar.js') }}" type="text/javascript">

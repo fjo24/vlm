@@ -21,6 +21,7 @@ class CreateProductosTable extends Migration
             $table->text('contenido')->nullable();
             $table->string('orden')->nullable();
             $table->string('video')->nullable();
+            $table->string('codigo')->nullable();
             $table->string('video_titulo')->nullable();
             $table->text('video_descripcion')->nullable();
             $table->enum('visible', ['publico', 'privado', 'ambos']);
@@ -49,6 +50,9 @@ class CreateProductosTable extends Migration
             $table->increments('id');
             $table->integer('modelo_id')->unsigned();
             $table->integer('producto_id')->unsigned();
+            $table->string('precio1')->nullable();
+            $table->string('precio2')->nullable();
+            $table->string('precio3')->nullable();
             $table->timestamps();
 
             $table->foreign('modelo_id')->references('id')->on('modelos')->onDelete('cascade');

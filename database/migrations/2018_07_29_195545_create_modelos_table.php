@@ -15,7 +15,8 @@ class CreateModelosTable extends Migration
     {
         Schema::create('modelos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('codigo');
+            $table->string('nombre')->nullable();
+            $table->string('codigo')->nullable();
             $table->string('orden')->nullable();
             $table->timestamps();
         });

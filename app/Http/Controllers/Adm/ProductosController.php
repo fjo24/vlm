@@ -150,4 +150,27 @@ class ProductosController extends Controller
         $producto = producto::find($idpro);
         return view('adm.productos.imagenes')->with(compact('imagenes', 'producto'));
     }
+
+    public function presentaciones($id)
+    {
+        $producto = Producto::find($id);
+        return view('adm.productos.presentaciones')->with(compact('producto'));
+    }
+
+    public function editPresentacion($id, $modelo)
+    {
+        $producto = Producto::find($id);
+        $model = $producto->modelos()->where('modelo_id',$modelo)->get()->first();
+        //dd($model);
+        return view('adm.productos.editpresentacion')->with(compact('producto', 'model'));
+    }
+
+    public function updatePresentacion(Request $request, $id, $modelo)
+    {
+        //dd($request->precio1);
+        $producto = Producto::find($id);
+        $model = $producto->modelos()->where('modelo_id',$modelo)->get()->first();
+        Producto::find($id)->modelos()->save($model, ['precio1' => $model->pivot->precio1, 'precio2' => $model->pivot->precio2, 'precio3' => $model->pivot->precio3]);
+        return redirect()->route('presentaciones', $producto->id);
+    }
 }
