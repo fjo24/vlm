@@ -83,6 +83,7 @@ class ZprivadaController extends Controller
     {
 
         $activo = 'carrito';
+        $banner = Banner::Where('seccion', 'ofertas')->first();
         $total_items = 0;
         $subtotal    = Cart::Subtotal();
         $total       = Cart::Total();
@@ -116,7 +117,7 @@ $iva = ($subtotal*$constante);
         $totales = $subtotal+$iva;
       //  $descuento = $total;
         }
-        return view('privada.pedidos.carrito', compact('activo', 'constante','desc', 'descuento', 'iva', 'totales', 'descuentos', 'diferencia', 'proximo'));
+        return view('privada.pedidos.carrito', compact('banner', 'activo', 'constante','desc', 'descuento', 'iva', 'totales', 'descuentos', 'diferencia', 'proximo'));
     }
 
     public function send(Request $request)
