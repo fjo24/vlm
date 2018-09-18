@@ -173,7 +173,7 @@
                             <i class="material-icons">
                                 home
                             </i>
-                            Sección quiero
+                            Quiero ser distribuidor
                         </a>
                         <div class="collapsible-body">
                             <ul>

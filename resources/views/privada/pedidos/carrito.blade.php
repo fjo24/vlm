@@ -6,11 +6,18 @@
 <link href="{{ asset('css/privada/zproductos.css') }}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset('css/privada/zproductos2.css') }}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset('css/privada/descuentos.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('css/pages/banner.css') }}" rel="stylesheet">
 <body>
+	<div class="seccion-banner" style="background: url(/{!! $banner->imagen !!});">
+    <div class="btexto" style="padding-top: 6%!important;">
+        <div class="tbanner">
+            <i>
+                {!! $banner->texto1 !!}
+            </i>
+        </div>
+    </div>
+</div>
 <main class="zonaprivada">
-
-	<div class="mipedido">CARRITO</div>
-
 	<div class="container" style="width:87%;">
 
 @if(isset($success))

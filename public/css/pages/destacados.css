@@ -58,6 +58,17 @@
     .div-nombredestacado {
         width: 166px;
     }
+    .destacados_home {
+        margin-top: 6%;
+    }
+
+    .box-cap-destacados {
+        position: absolute!important;
+        left: 10%;
+        top: 37%;
+        width: 80%;
+        display: table;
+    }
 }
 
 .cuadradas img{

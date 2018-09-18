@@ -39,16 +39,18 @@
                 </span>
             </div>
             @foreach($productos as $producto)
-            <div class="col l4 m4 s12">
+            <div class="col l4 m12 s12">
                 <div class="card" style="margin: 0% 7%;">
                     <div class="cuadradas card-image">
                         @foreach($producto->imagenes as $imagen)
-                        <img alt="" class="responsive-img" src="{{asset($imagen->imagen)}}" style="height: 294px;">
-                            @if($ready == 0)	
-	                             		@break;
-	                        @endif
-	                    @endforeach
-                        </img>
+                        <a href="{{ route('productoinfo', $producto->id)}}">
+                            <img alt="" class="responsive-img" src="{{asset($imagen->imagen)}}" style="height: 294px;">
+                                @if($ready == 0)	
+    	                             		@break;
+    	                        @endif
+                            </img>
+                        </a>
+                        @endforeach
                     </div>
                 </div>
                 <div class="div-nombrehome center" style="    position: relative;">
@@ -66,7 +68,7 @@
     <div class="row" style="margin-bottom: 7%;">
         <div class="col l12 m12 s12">
             @foreach($destacados as $destacado)
-            <div class="col l6 m6 s12">
+            <div class="destacados_home col l6 m6 s12">
                 <div class="card" style="margin: 0% 1%;">
                     <div class="cuadradas card-image">
                         <img alt="" class="responsive-img" src="{{asset($destacado->imagen)}}" style="height: 267px;">

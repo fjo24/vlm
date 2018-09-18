@@ -79,7 +79,7 @@
                     <div class="col l1 m1 s1" style="">
                     </div>
                     <div class="col l2 m2 s3" style="padding-top: 4.5%;">
-                        <img alt="" class="" src="{{asset('img/layouts/logofootervlm.png')}}">  
+                        <img alt="" class="" src="{{asset('/../../../img/layouts/logofootervlm.png')}}">  
                         </img>
                     </div>
                     <div class="col l9 m9 s8" style="">
