@@ -35,6 +35,7 @@ class DistribuidoresController extends Controller
         $distribuidor->direccion = $request->direccion;
         $distribuidor->postal    = $request->postal;
         $distribuidor->email     = $request->email;
+        $distribuidor->tipo     = $request->tipo;
         $distribuidor->nivel     = 'distribuidor';
         $distribuidor->password  = \Hash::make($request->password);
         $distribuidor->save();
@@ -66,7 +67,10 @@ class DistribuidoresController extends Controller
         $distribuidor->direccion = $request->direccion;
         $distribuidor->postal    = $request->postal;
         $distribuidor->email     = $request->email;
-        $distribuidor->password  = \Hash::make($request->password);
+        if (!is_null($request->password)) {
+            $distribuidor->password  = \Hash::make($request->password);
+        }
+        $distribuidor->tipo     = $request->tipo;
         $distribuidor->save();
         }
 

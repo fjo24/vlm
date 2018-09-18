@@ -17,6 +17,7 @@
 		<thead>
 			<tr>
 				<th style="text-align: left;">Producto</th>
+				<th style="">Presentación</th>
 				<th>Cantidad</th>
 				<th style="text-align: right;">Precio unitario</th>
 				<th>Codigo</th>
@@ -26,6 +27,7 @@
 			@foreach($items as $producto)
 				<tr>
 					<td style="text-align: left;">{{ $producto->name }}</td>
+					<td style="">{{ $producto->options->modelo }}</td>
 					<td>{{ $producto->qty }}</td>
 					<td>${{ $producto->price }}</td>
 					<td>{{ $producto->options->codigo }}</td>

@@ -88,16 +88,33 @@
                             <div class="contenidoproducto">    
                                 {!! $p->contenido !!}
                             </div>
+                            @foreach($p->modelos as $modelo)
                             {!! Form::open(['route'=>'carrito.add','METHOD'=>'POST'])!!}
                             <div><input type="hidden" value="{{$p->id}}" name="id"></div>
+                            <div><input type="hidden" value="{{$modelo->id}}" name="modelo_id"></div>
                             <div class="col l12 m12 s12" style="padding-left: 0;margin-bottom: 5%;">
+                                <div class="col l12 m12 s12" style="padding-left: 0;">
+                                    <h6>Presentación: {!!$modelo->nombre!!}</h6>
+                                </div>
                                 <div class="col l4 m4 s4" style="padding-left: 0;">
 <input type="number" name="cantidad" value="1" style="width: 46px;" required>
                                     <label for="cantidad">Unidades</label>
                                 </div>
                                 <div class="col l8 m8 s8 right">
                                     <span class="right" style="font-family: 'Lato'; font-size: 26px;color: #2B2B2B;">
-                                    {{ '$'.number_format($p->precio, 2, ',','.') }}
+                                    @if(Auth::User()->tipo=='precio1')
+                                    {{ '$'.number_format($modelo->pivot->precio1, 2, ',','.') }}
+                                    <div><input type="hidden" value="{{$modelo->pivot->precio1}}" name="precio"></div>
+                                    @endif
+                                    @if(Auth::User()->tipo=='precio2')
+                                    {{ '$'.number_format($modelo->pivot->precio2, 2, ',','.') }}
+                                    <div><input type="hidden" value="{{$modelo->pivot->precio2}}" name="precio"></div>
+                                    @endif
+                                    @if(Auth::User()->tipo=='precio3')
+                                    {{ '$'.number_format($modelo->pivot->precio3, 2, ',','.') }}
+                                    <div><input type="hidden" value="{{$modelo->pivot->precio3}}" name="precio"></div>
+                                    @endif
+
                                     </span><br>
                                     <hr style="margin-top: 8%;">
                                     <i><span class="right">Los precios no incluyen IVA</span></i>
@@ -105,7 +122,7 @@
                             </div>
                             <div class="right">
                                 
-                               <a href="{{ route('contacto', $p->nombre) }}">
+                               <a href="">
         <button type="submit" class="pedido btn btn-default left" href="" style="background-color: #85b7e6;width: 212px;">
                <i class="material-icons">add_shopping_cart</i> 
             <span class="rpedido">
@@ -115,6 +132,7 @@
     </a>
                             </div>
 {!!Form::close()!!}
+                            @endforeach
                         </div>
               
                     </div>

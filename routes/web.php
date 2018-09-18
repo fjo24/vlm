@@ -106,6 +106,16 @@ Route::get('productoinfo/{id}', 'PaginasController@productoinfo')->name('product
         'uses' => 'Adm\ProductosController@presentaciones',
         'as'   => 'presentaciones',
     ])->middleware('admin');
+    /*------------NUEVA PRESENTACION----------------*/
+    Route::get('productos/{id}/newpresentacion', [
+        'uses' => 'Adm\ProductosController@newPresentacion',
+        'as'   => 'newpresentacion',
+    ])->middleware('admin');
+    /*-- GUARDAR PRESENTACION --*/
+    Route::put('productos/storepresentacion/{id}', [
+        'uses' => 'Adm\ProductosController@storePresentacion',
+        'as'   => 'storepresentacion',
+    ])->middleware('admin');
 
     /*------------EDITAR PRESENTACIONES----------------*/
     Route::get('productos/editarpresentacion/{id}/{modelo}', [
@@ -116,6 +126,11 @@ Route::get('productoinfo/{id}', 'PaginasController@productoinfo')->name('product
     Route::put('productos/updatepresentacion/{id}/{modelo}', [
         'uses' => 'Adm\ProductosController@updatePresentacion',
         'as'   => 'updatepresentacion',
+    ])->middleware('admin');
+    /*BORRAR PRESENTACION*/
+    Route::delete('productos/deletepresentacion/{id}/{modelo}', [
+        'uses' => 'Adm\ProductosController@destroypresentacion',
+        'as'   => 'destroypresentacion',
     ])->middleware('admin');
 
     /*------------Imagen----------------*/

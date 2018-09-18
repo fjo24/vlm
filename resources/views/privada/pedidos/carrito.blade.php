@@ -46,8 +46,8 @@
 
 							<th style="">PRODUCTO</th>
 
-							<th style="">MODELO</th>
-
+							<th style="">PRESENTACION</th>
+							
 							<th style="">PRECIO UNITARIO</th>
 
 							<th style="">CANTIDAD</th>
@@ -70,7 +70,7 @@
 									<td class="timagen " style="width: 95px; height: 85px;"><img class="responsive-img" src="{{ asset($row->options->imagen) }}"/></td>
 									<td style="">{{ $row->name }}</td>
 									<td style="">
-										{{$row->options->codigo}}
+										{{$row->options->modelo}}
 									</td>
 									<td style="">{{ '$'.number_format($row->price, 2, ',','.') }}</td>
 									<td style="">{{ $row->qty }}</td>
@@ -143,7 +143,7 @@
 									{!! Form::close() !!}
 								</div>
 
-									<a href="{{ url('/zonaprivada/productos') }}" style="position: relative;right: -20%;cursor: pointer;" class="right"><button class="boton seguircomprando" style="height: 42px;border: 1px solid #3F3F3F; color:#3F3F3F; background-color: white; padding: 20px; width: 181px;position: relative;border-radius: 6px;"><span style="font-family: 'Montserrat';font-size: 12px;position: relative;bottom: 8px;font-weight: bold;">SEGUIR COMPRANDO</span></button></a>
+									<a href="{{ url()->previous() }}" style="position: relative;right: -20%;cursor: pointer;" class="right"><button class="boton seguircomprando" style="height: 42px;border: 1px solid #3F3F3F; color:#3F3F3F; background-color: white; padding: 20px; width: 181px;position: relative;border-radius: 6px;"><span style="font-family: 'Montserrat';font-size: 12px;position: relative;bottom: 8px;font-weight: bold;">SEGUIR COMPRANDO</span></button></a>
 						</div>
 					@endif
 				</div>

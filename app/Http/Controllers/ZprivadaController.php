@@ -54,7 +54,9 @@ class ZprivadaController extends Controller
         $total_items = 0;
         $productos = Producto::OrderBy('orden', 'DESC')->get();
         $producto  = Producto::find($request->id);
+        $modelo  = Modelo::find($request->modelo_id);
         //dd($request->medida);
+        //dd($producto);
         foreach ($producto->imagenes as $img) {
             $imagen = $img->imagen;
             if ($im == 0) {
@@ -72,7 +74,7 @@ class ZprivadaController extends Controller
         $categoria = $producto->categoria->nombre;     
 
         if ($request->cantidad > 0) {
-            Cart::add(['id' => $producto->id, 'name' => $producto->nombre, 'price' => $producto->precio, 'qty' => $request->cantidad, 'options' => ['orden' => $producto->orden, 'imagen' => $imagen, 'categoria' => $categoria, 'codigo' => $codigo]]);
+            Cart::add(['id' => $producto->id, 'name' => $producto->nombre, 'price' => $request->precio, 'qty' => $request->cantidad, 'options' => ['orden' => $producto->orden, 'modelo' => $modelo->nombre, 'imagen' => $imagen, 'categoria' => $categoria, 'codigo' => $codigo]]);
             return redirect()->route('carrito', compact('shop', 'medida', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items', 'codigo', 'desc', 'iva'));
         } else {
             return back();
@@ -151,7 +153,7 @@ $iva = ($subtotal*$constante);
             $total_costo = $total_ivap + $costo;
             //$idproducto = $row->rowId
             $total_items = $total_items + $row->qty;
-            $pedido->productos()->attach($producto, ['cantidad' => $row->qty, 'pedido_id' => $pedido->id, 'producto_id' => $row->id, 'costo' => $row->price * $row->qty, 'total' => $total_costo]);
+            $pedido->productos()->attach($producto, ['cantidad' => $row->qty, 'pedido_id' => $pedido->id, 'producto_id' => $row->id, 'modelo' => $row->options->modelo, 'costo' => $row->price * $row->qty, 'total' => $total_costo]);
         }
 
         $carrito = Cart::content();

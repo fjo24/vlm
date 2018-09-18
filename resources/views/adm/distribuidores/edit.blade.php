@@ -129,7 +129,11 @@
 
                             </div>
 
+
                             <div class="row">
+                            <div class="input-field col l12 m12 s12">
+                                {!! Form::select('tipo', ['precio1' => 'Nivel precio 1', 'precio2' => 'Nivel precio 2', 'precio3' => 'Nivel precio 3'], null, ['class' => 'form-control', 'placeholder' => 'Indique nivel de precios de usuario']) !!}
+                            </div>
 
                                 <div class="input-field col s12">
 

@@ -120,7 +120,7 @@
                                         </img>
                     </li>
                     <li class="items_header" style="">
-                        <div class="dropdown-trigger" data-target="dropdown1">
+                        <div class="dropdown-trigger">
                                         <a class="right" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();" style="text-transform: capitalize;line-height: 123%;margin-top: 11%;color: #93ADDA;font-size: 17px;font-weight: 600;">
                             {{ Auth::User()->name }}
