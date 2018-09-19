@@ -63,18 +63,11 @@ class ZprivadaController extends Controller
                 break;
             }
         }
-
-        foreach($producto->modelos as $modelo){
-            $codigo = $modelo->codigo;
-            if($ready == 0){
-                break;
-            }
-        }
         
         $categoria = $producto->categoria->nombre;     
 
         if ($request->cantidad > 0) {
-            Cart::add(['id' => $producto->id, 'name' => $producto->nombre, 'price' => $request->precio, 'qty' => $request->cantidad, 'options' => ['orden' => $producto->orden, 'modelo' => $modelo->nombre, 'imagen' => $imagen, 'categoria' => $categoria, 'codigo' => $codigo]]);
+            Cart::add(['id' => $producto->id, 'name' => $producto->nombre, 'price' => $request->precio, 'qty' => $request->cantidad, 'options' => ['orden' => $producto->orden, 'modelo' => $modelo->nombre, 'imagen' => $imagen, 'categoria' => $categoria, 'codigo' => $request->codigo]]);
             return redirect()->route('carrito', compact('shop', 'medida', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items', 'codigo', 'desc', 'iva'));
         } else {
             return back();

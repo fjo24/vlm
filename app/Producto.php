@@ -22,7 +22,7 @@ class Producto extends Model
 
     public function modelos()
     {
-        return $this->belongsToMany('App\Modelo', 'modelo_producto')->withPivot('precio1', 'precio2', 'precio3');
+        return $this->belongsToMany('App\Modelo', 'modelo_producto')->withPivot('precio1', 'precio2', 'precio3', 'codigo');
     }
 
 

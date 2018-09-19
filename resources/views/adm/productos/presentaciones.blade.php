@@ -28,6 +28,9 @@
                     Nombre
                 </th>
                 <th>
+                    Codigo
+                </th>
+                <th>
                     Precio 1
                 </th>
                 <th>
@@ -45,6 +48,9 @@
                 <tr>
                     <td>
                         {!!$modelo->nombre!!}
+                    </td>
+                    <td>
+                        {!!$modelo->pivot->codigo!!}
                     </td>
                     <td>
                         {!!$modelo->pivot->precio1!!}

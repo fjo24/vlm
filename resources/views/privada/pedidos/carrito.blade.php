@@ -46,6 +46,8 @@
 
 							<th style="">PRODUCTO</th>
 
+							<th style="">CODIGO</th>
+
 							<th style="">PRESENTACION</th>
 							
 							<th style="">PRECIO UNITARIO</th>
@@ -69,6 +71,9 @@
 									<td></td>
 									<td class="timagen " style="width: 95px; height: 85px;"><img class="responsive-img" src="{{ asset($row->options->imagen) }}"/></td>
 									<td style="">{{ $row->name }}</td>
+									<td style="">
+										{{$row->options->codigo}}
+									</td>
 									<td style="">
 										{{$row->options->modelo}}
 									</td>

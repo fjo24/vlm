@@ -1,10 +1,11 @@
 @extends('pages.templates.body')
 
-@section('titulo', 'Línea Parpen')
+@section('titulo', 'Línea VLM')
 @section('css')
     <link href="{{ asset('css/pages/slider.css') }}" rel="stylesheet">
     <link href="{{ asset('css/pages/productos.css') }}" rel="stylesheet">
     <link href="{{ asset('css/pages/productoinfo.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/pages/destacados.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/pages/menuproductos.css') }}" rel="stylesheet">
     <link href="{{ asset('css/pages/banner.css') }}" rel="stylesheet">
 @endsection
@@ -27,7 +28,7 @@
     <section class="productos">
         <div class="row">
             <div class="col l12 m12 s12" style="padding-right: 0px;padding-left: 22px;">
-                <div class="col l3 s12 m3">
+                <div class="col l3 s12 m12">
                                             <div class="menuproductos">    
                                                 @include('pages.templates.menu')
                                             </div>
@@ -55,7 +56,7 @@
                                                     @foreach($p->imagenes as $imagen)
                                                     <div class="col l4 s4 m2" style="padding-left: 0px;">
                                                         <div class="cont-img">
-                                                            <img alt="" class="responsive-img" onclick="actualizar('{{asset($imagen->imagen)}}')" src="{{asset($imagen->imagen)}}" style="border: 1px solid #AAAAAA;height: 110px; width: 110px;">
+                                                            <img alt="" class="responsive-img" onclick="actualizar('{{asset($imagen->imagen)}}')" src="{{asset($imagen->imagen)}}" style="border: 1px solid #AAAAAA; width: 110px;">
                                                             </img>
                                                         </div>
                                                     </div>
@@ -87,6 +88,16 @@
                             </div>
                             <div class="contenidoproducto">    
                                 {!! $p->contenido !!}
+                            </div>
+                            <div class="row">
+                                <div class="col l5 m5 s5" style="font-family: 'Lato';    font-size: 18px;color: #9972d2;">    
+                                    PRESENTACIÓN
+                                </div>
+                                <div class="col l7 m7 s7" style="font-family: 'Lato';    font-size: 18px;color: #595959;">    
+                                    @foreach($p->modelos as $modelo)
+                                    {!! $modelo->nombre !!} / <i>Cod:</i> {!! $modelo->pivot->codigo !!}<br>
+                                    @endforeach
+                                </div>
                             </div>
                                <a href="{{ route('contacto') }}">
         <button class="pedido btn btn-default left" href="" style="background-color: #85b7e6;">
@@ -133,16 +144,23 @@
                     <div class="col l12 m12 s12 relablock" style="margin-top: 2%;">
                     @foreach($p->productos as $relacionado)
                     <a href="{{ route('productoinfo', $relacionado->id)}}">
-                        <div class="col l4 m6 s6 categoria-tarjeta">
-                            @foreach($relacionado->imagenes as $img)
-                            <img class="responsive-img" src="{{ asset($img->imagen) }}"/>
-                            <h2 class="center" style="margin-left: 0px;margin-right: 0px;">
-                                {{ $relacionado->nombre }}
-                            </h2>
-                            @if($ready == 0)    
-                                        @break;
-                                    @endif
-                            @endforeach
+                        <div class="col l4 m6 s6">
+                            <div class="card" style="margin: 0% 7%;">
+                                <div class="cuadradas card-image">
+                                    @foreach($relacionado->imagenes as $imagen)
+                                    <a href="{{ route('productoinfo', $p->id)}}">
+                                        <img alt="" class="responsive-img" src="{{asset($imagen->imagen)}}" style="">
+                                            @if($ready == 0)    
+                                                        @break;
+                                            @endif
+                                        </img>
+                                    </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="div-nombrehome center" style="    position: relative;">
+                                {!!$relacionado->nombre !!}
+                            </div>
                         </div>
                     </a>
                     @endforeach 

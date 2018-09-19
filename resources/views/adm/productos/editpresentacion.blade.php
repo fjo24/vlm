@@ -26,15 +26,19 @@
     {!!Form::model($model, ['route'=>['updatepresentacion',$producto->id, $model->id], 'method'=>'PUT', 'files' => true])!!}
 
         <div class="row">
-            <div class="input-field col s4">
+            <div class="file-field input-field col l6 m6 s12">
+                {!!Form::label('Codigo:')!!}
+                {!!Form::text('codigo', $model->pivot->codigo, ['class'=>''])!!}
+            </div>
+            <div class="input-field col l6 m6 s12">
                 {!!Form::label('Precio 1:')!!}
                 {!!Form::text('precio1', $model->pivot->precio1, ['class'=>''])!!}
             </div>
-            <div class="input-field col s4">
+            <div class="input-field col l6 m6 s12">
                 {!!Form::label('Precio 2:')!!}
                 {!!Form::text('precio2', $model->pivot->precio2, ['class'=>''])!!}
             </div>
-            <div class="input-field col s4">
+            <div class="input-field col l6 m6 s12">
                 {!!Form::label('Precio 3:')!!}
                 {!!Form::text('precio3', $model->pivot->precio3, ['class'=>''])!!}
             </div>

@@ -13,6 +13,6 @@ class Modelo extends Model
 
     public function productos()
     {
-        return $this->belongsToMany('App\Producto', 'modelo_producto', 'modelo_id', 'producto_id')->withPivot('precio1', 'precio2', 'precio3');
+        return $this->belongsToMany('App\Producto', 'modelo_producto', 'modelo_id', 'producto_id')->withPivot('precio1', 'precio2', 'precio3', 'codigo');
     }
 }

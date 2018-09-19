@@ -26,18 +26,22 @@
     {!!Form::model($producto, ['route'=>['storepresentacion',$producto->id], 'method'=>'PUT', 'files' => true])!!}
 
         <div class="row">
-            <div class="file-field input-field col l3 m3 s12">
+            <div class="file-field input-field col l6 m6 s12">
                 {!! Form::select('modelo_id', $modelos, null, ['class' => 'form-control', 'placeholder' => 'Presentacion', 'required']) !!}
             </div>
-            <div class="input-field col l3 m3 s12">
+            <div class="file-field input-field col l6 m6 s12">
+                {!!Form::label('Codigo:')!!}
+                {!!Form::text('codigo', null, ['class'=>''])!!}
+            </div>
+            <div class="input-field col l4 m4 s12">
                 {!!Form::label('Precio 1:')!!}
                 {!!Form::text('precio1', null, ['class'=>''])!!}
             </div>
-            <div class="input-field col l3 m3 s12">
+            <div class="input-field col l4 m4 s12">
                 {!!Form::label('Precio 2:')!!}
                 {!!Form::text('precio2', null, ['class'=>''])!!}
             </div>
-            <div class="input-field col l3 m3 s12">
+            <div class="input-field col l4 m4 s12">
                 {!!Form::label('Precio 3:')!!}
                 {!!Form::text('precio3', null, ['class'=>''])!!}
             </div>

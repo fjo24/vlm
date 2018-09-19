@@ -92,9 +92,11 @@
                             {!! Form::open(['route'=>'carrito.add','METHOD'=>'POST'])!!}
                             <div><input type="hidden" value="{{$p->id}}" name="id"></div>
                             <div><input type="hidden" value="{{$modelo->id}}" name="modelo_id"></div>
-                            <div class="col l12 m12 s12" style="padding-left: 0;margin-bottom: 5%;">
-                                <div class="col l12 m12 s12" style="padding-left: 0;">
-                                    <h6>Presentación: {!!$modelo->nombre!!}</h6>
+                            <div class="col l12 m12 s12" style="padding-left: 0;margin-bottom: 5%; margin-top: 5%">
+                                <div class="col l12 m12 s12" style="font-family: 'Lato';font-size: 20px;padding-left: 0;">
+                                    <span style="font-family: 'Lato';font-size: 18px;color: #9972d2;">Presentación: </span>{!!$modelo->nombre!!}
+                                    <i>Cod:</i> {!! $modelo->pivot->codigo !!}<br><br>
+                                    <div><input type="hidden" value="{{$modelo->pivot->codigo}}" name="codigo"></div>
                                 </div>
                                 <div class="col l4 m4 s4" style="padding-left: 0;">
 <input type="number" name="cantidad" value="1" style="width: 46px;" required>
@@ -132,6 +134,7 @@
     </a>
                             </div>
 {!!Form::close()!!}
+<br>
                             @endforeach
                         </div>
               

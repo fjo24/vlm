@@ -168,7 +168,7 @@ class ProductosController extends Controller
     {
         //dd($request->precio1);
         $producto = Producto::find($id);
-        Producto::find($id)->modelos()->attach($producto, ['modelo_id' => $request->modelo_id,'precio1' => $request->precio1, 'precio2' => $request->precio2, 'precio3' => $request->precio3]);
+        Producto::find($id)->modelos()->attach($producto, ['modelo_id' => $request->modelo_id,'precio1' => $request->precio1, 'precio2' => $request->precio2, 'precio3' => $request->precio3, 'codigo' => $request->codigo]);
 
         return redirect()->route('presentaciones', $producto->id);
     }
@@ -176,9 +176,10 @@ class ProductosController extends Controller
     public function editPresentacion($id, $modelo)
     {
         $producto = Producto::find($id);
+        $modelos = Modelo::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
         $model = $producto->modelos()->where('modelo_id',$modelo)->get()->first();
         //dd($model);
-        return view('adm.productos.editpresentacion')->with(compact('producto', 'model'));
+        return view('adm.productos.editpresentacion')->with(compact('producto', 'model', 'modelos'));
     }
 
     public function updatePresentacion(Request $request, $id, $modelo)
@@ -186,8 +187,8 @@ class ProductosController extends Controller
         //dd($request->precio1);
         $producto = Producto::find($id);
         $model = $producto->modelos()->where('modelo_id',$modelo)->get()->first();
-        Producto::find($id)->modelos()->detach($model, ['precio1' => $request->precio1, 'precio2' => $request->precio2, 'precio3' => $request->precio3]);
-        Producto::find($id)->modelos()->attach($model, ['precio1' => $request->precio1, 'precio2' => $request->precio2, 'precio3' => $request->precio3]);
+        Producto::find($id)->modelos()->detach($model, ['precio1' => $request->precio1, 'precio2' => $request->precio2, 'precio3' => $request->precio3, 'codigo' => $request->codigo]);
+        Producto::find($id)->modelos()->attach($model, ['precio1' => $request->precio1, 'precio2' => $request->precio2, 'precio3' => $request->precio3, 'codigo' => $request->codigo]);
 
         return redirect()->route('presentaciones', $producto->id);
     }
