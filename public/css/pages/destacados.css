@@ -42,17 +42,17 @@
     display: table;
 }
 
-.div-nombredestacado{
+.div-nombredestacado {
     font-size: 32;
     color: white;
     font-family: 'Asap';
     background-color: #806EA8;
     height: 57px;
-    width: 320px;
+    width: 100%;
+    padding: 0px 41px;
     display: table-cell;
     vertical-align: middle;
 }
-
 
 @media only screen and (max-width: 503px){
     .div-nombredestacado {

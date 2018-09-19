@@ -54,6 +54,7 @@ class CreateProductosTable extends Migration
             $table->string('precio1')->nullable();
             $table->string('precio2')->nullable();
             $table->string('precio3')->nullable();
+            $table->string('codigo')->nullable();
             $table->timestamps();
 
             $table->foreign('modelo_id')->references('id')->on('modelos')->onDelete('cascade');
